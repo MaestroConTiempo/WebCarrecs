@@ -1,7 +1,49 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, ArrowRight, Check, ZapOff, Users, BookOpen, Lock, ArrowUpRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Users, BookOpen, Lock, ArrowUpRight } from 'lucide-react';
+
+// Detects when an element enters the viewport (fires once)
+function useInView(threshold = 0.15) {
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setInView(true); observer.disconnect(); } },
+      { threshold }
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, [threshold]);
+  return [ref, inView];
+}
+
+// Animates a number from 0 to target when inView becomes true
+function useCounter(target, inView, duration = 1200) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    if (!inView) return;
+    let current = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) { setCount(target); clearInterval(timer); }
+      else { setCount(Math.floor(current)); }
+    }, 16);
+    return () => clearInterval(timer);
+  }, [inView, target, duration]);
+  return count;
+}
+
+// Returns inline styles for fade-in animation with optional direction and delay
+const fade = (inView, delay = 0, dir = 'up') => ({
+  opacity: inView ? 1 : 0,
+  transform: inView ? 'none' :
+    dir === 'left' ? 'translateX(-30px)' :
+    dir === 'right' ? 'translateX(30px)' :
+    'translateY(25px)',
+  transition: `opacity 0.6s ease ${delay}ms, transform 0.6s ease ${delay}ms`,
+});
 
 export default function CentreIALanding() {
   const [scrollY, setScrollY] = useState(0);
@@ -12,6 +54,17 @@ export default function CentreIALanding() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const [metricsRef, metricsInView] = useInView();
+  const [problemaRef, problemaInView] = useInView();
+  const [programaRef, programaInView] = useInView();
+  const [quedaRef, quedaInView] = useInView();
+  const [antesRef, antesInView] = useInView();
+  const [testimonialRef, testimonialInView] = useInView();
+  const [passosRef, passosInView] = useInView();
+
+  const count18 = useCounter(18, metricsInView);
+  const count3 = useCounter(3, metricsInView);
 
   return (
     <div className="w-full overflow-hidden bg-white text-slate-900">
@@ -66,20 +119,20 @@ export default function CentreIALanding() {
           </div>
 
           {/* Impact metrics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div className="border-l-4 border-blue-900 pl-6">
-              <div className="text-5xl font-black text-blue-900">18h</div>
+          <div ref={metricsRef} className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="border-l-4 border-blue-900 pl-6" style={fade(metricsInView, 0)}>
+              <div className="text-5xl font-black text-blue-900">{count18}h</div>
               <div className="text-slate-600 text-sm mt-1">→ 2h per docent en informes</div>
             </div>
-            <div className="border-l-4 border-blue-900 pl-6">
+            <div className="border-l-4 border-blue-900 pl-6" style={fade(metricsInView, 150)}>
               <div className="text-5xl font-black text-blue-900">=</div>
               <div className="text-slate-600 text-sm mt-1">Unifiquem la línia d'escola</div>
             </div>
-            <div className="border-l-4 border-blue-900 pl-6">
-              <div className="text-5xl font-black text-blue-900">3</div>
+            <div className="border-l-4 border-blue-900 pl-6" style={fade(metricsInView, 300)}>
+              <div className="text-5xl font-black text-blue-900">{count3}</div>
               <div className="text-slate-600 text-sm mt-1">fluxos automatitzats</div>
             </div>
-            <div className="border-l-4 border-blue-900 pl-6">
+            <div className="border-l-4 border-blue-900 pl-6" style={fade(metricsInView, 450)}>
               <div className="text-5xl font-black text-blue-900">∞</div>
               <div className="text-slate-600 text-sm mt-1">Estandaritzem maneres de fer al centre</div>
             </div>
@@ -93,7 +146,7 @@ export default function CentreIALanding() {
           <h2 className="text-5xl md:text-6xl font-black mb-6">Què passa al vostre centre?</h2>
           <p className="text-xl text-slate-600 mb-16 max-w-3xl">Reconeixeu alguna d'aquestes situacions?</p>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div ref={problemaRef} className="grid md:grid-cols-2 gap-8">
             {[
               {
                 icon: '📄',
@@ -126,7 +179,11 @@ export default function CentreIALanding() {
                 desc: 'Cada cicle fa la seva. Metodologies fragmentades. Alumnes que canvien de dinàmica cada any.'
               }
             ].map((item, i) => (
-              <div key={i} className="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-lg hover:shadow-blue-100 transition-all">
+              <div
+                key={i}
+                className="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-lg hover:shadow-blue-100 transition-all"
+                style={fade(problemaInView, i * 100)}
+              >
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-2xl font-black mb-3 text-slate-900">{item.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{item.desc}</p>
@@ -150,27 +207,23 @@ export default function CentreIALanding() {
             Programa d'implementació amb 3 fases. Entrem, identifiquem els fluxos que us cremen més, els automatitzem, documentem tot i entreguem sistemes que funcionen.
           </p>
 
-          {/* The 3 phases */}
-          <div className="grid md:grid-cols-3 gap-6 mb-16">
+          <div ref={programaRef} className="grid md:grid-cols-3 gap-6 mb-16">
             {[
               {
                 num: '01',
                 title: 'Pilot',
                 desc: 'Provem amb 1 cicle o equip. Implantem fluxos reals. El centre veu el resultat sense compromís global.',
-                color: 'from-slate-100 to-slate-50'
               },
               {
                 num: '02',
                 title: 'Implantació',
                 desc: 'Escalem a tot el claustre. Creem 3 fluxos estables, assistents personalitzats i manual operatiu complet.',
-                color: 'from-blue-50 to-slate-50',
                 highlight: true
               },
               {
                 num: '03',
                 title: 'Expansió',
                 desc: 'Nous fluxos segons necessitats. Comunicacions a famílies, programacions, seguiment. El sistema creix amb l\'escola.',
-                color: 'from-slate-100 to-slate-50'
               }
             ].map((phase, i) => (
               <div
@@ -180,6 +233,7 @@ export default function CentreIALanding() {
                     ? 'border-blue-900 bg-gradient-to-br from-blue-50 to-slate-50 shadow-2xl scale-105'
                     : 'border-slate-200 bg-gradient-to-br from-slate-100 to-slate-50 hover:border-blue-500'
                 }`}
+                style={fade(programaInView, i * 150)}
                 onMouseEnter={() => setActivePhase(i)}
               >
                 <div className={`text-5xl font-black mb-2 ${phase.highlight ? 'text-blue-900' : 'text-slate-400'}`}>
@@ -222,7 +276,7 @@ export default function CentreIALanding() {
             No és teoria. No són certificats. Són sistemes que el claustre usa cada setmana.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div ref={quedaRef} className="grid md:grid-cols-2 gap-8 mb-12">
             {[
               {
                 icon: <BookOpen size={32} className="text-blue-900" />,
@@ -245,7 +299,11 @@ export default function CentreIALanding() {
                 desc: 'Document de criteris mínim: quin tipus de dades es pot compartir, com anonimitzar. El centre manté control total.'
               }
             ].map((item, i) => (
-              <div key={i} className="p-10 bg-white border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-blue-100 transition-all">
+              <div
+                key={i}
+                className="p-10 bg-white border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-lg hover:shadow-blue-100 transition-all"
+                style={fade(quedaInView, i * 120)}
+              >
                 <div className="mb-6">{item.icon}</div>
                 <h3 className="text-2xl font-black mb-4">{item.title}</h3>
                 <p className="text-slate-600 leading-relaxed">{item.desc}</p>
@@ -268,7 +326,7 @@ export default function CentreIALanding() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black mb-6">Exemples reals: Abans vs Després</h2>
 
-          <div className="space-y-6">
+          <div ref={antesRef} className="space-y-6">
             {[
               {
                 caso: 'Informes trimestrals (25 alumnes)',
@@ -292,12 +350,18 @@ export default function CentreIALanding() {
               }
             ].map((ejemplo, i) => (
               <div key={i} className="grid md:grid-cols-2 gap-6">
-                <div className="p-8 bg-red-50 border-l-4 border-red-400 rounded-lg">
+                <div
+                  className="p-8 bg-red-50 border-l-4 border-red-400 rounded-lg"
+                  style={fade(antesInView, i * 80, 'left')}
+                >
                   <p className="text-sm font-black text-red-900 mb-2">ABANS</p>
                   <p className="font-black text-slate-900 mb-3">{ejemplo.caso}</p>
                   <p className="text-slate-700">{ejemplo.antes}</p>
                 </div>
-                <div className="p-8 bg-green-50 border-l-4 border-green-400 rounded-lg flex flex-col justify-between">
+                <div
+                  className="p-8 bg-green-50 border-l-4 border-green-400 rounded-lg flex flex-col justify-between"
+                  style={fade(antesInView, i * 80 + 220, 'right')}
+                >
                   <div>
                     <p className="text-sm font-black text-green-900 mb-2">DESPRÉS</p>
                     <p className="text-slate-700">{ejemplo.despues}</p>
@@ -317,7 +381,7 @@ export default function CentreIALanding() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-black mb-12">Centres que ja ho han implantat</h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div ref={testimonialRef} className="grid md:grid-cols-2 gap-8">
             {[
               {
                 quote: 'Hem automatitzat la feina repetitiva i hem recuperat hores per a allò que importa. El claustre ara treballa de manera coordinada i els nous docents s\'incorporen en dies, no en setmanes.',
@@ -330,7 +394,11 @@ export default function CentreIALanding() {
                 school: 'Escola Samuntada de Sabadell'
               }
             ].map((test, i) => (
-              <div key={i} className="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-lg hover:shadow-blue-100 transition-all">
+              <div
+                key={i}
+                className="p-8 bg-white border-2 border-slate-200 rounded-2xl hover:border-blue-500 hover:shadow-lg hover:shadow-blue-100 transition-all"
+                style={fade(testimonialInView, i * 200)}
+              >
                 <p className="text-lg font-medium text-slate-900 mb-6 italic">
                   "{test.quote}"
                 </p>
@@ -356,7 +424,7 @@ export default function CentreIALanding() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black mb-6">4 passos per posar el centre en marxa</h2>
 
-          <div className="space-y-8">
+          <div ref={passosRef} className="space-y-8">
             {[
               {
                 num: '01',
@@ -379,7 +447,11 @@ export default function CentreIALanding() {
                 desc: 'Nous fluxos segons necessitats. El sistema creix amb l\'escola. Docents nous reben accés immediat.'
               }
             ].map((paso, i) => (
-              <div key={i} className="flex gap-8 pb-8 border-b border-slate-200 last:border-b-0">
+              <div
+                key={i}
+                className="flex gap-8 pb-8 border-b border-slate-200 last:border-b-0"
+                style={fade(passosInView, i * 150)}
+              >
                 <div className="min-w-16 h-16 bg-blue-900 text-white rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-2xl font-black">{paso.num}</span>
                 </div>
