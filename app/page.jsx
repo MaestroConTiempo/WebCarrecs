@@ -150,7 +150,7 @@ export default function CentreIALanding() {
       </section>
 
       {/* PROBLEMA */}
-      <section id="problema" className="py-24 px-6 bg-slate-50 relative">
+      <section id="problema" className="py-24 px-6 bg-blue-50 relative">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black mb-6">Què passa al vostre centre?</h2>
           <p className="text-xl text-slate-600 mb-16 max-w-3xl">Reconeixeu alguna d'aquestes situacions?</p>
@@ -251,7 +251,7 @@ export default function CentreIALanding() {
       </section>
 
       {/* QUÈ QUEDA */}
-      <section className="py-24 px-6 bg-slate-50">
+      <section className="py-24 px-6 bg-blue-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black mb-6">Què queda al centre quan acabem</h2>
           <p className="text-xl text-slate-600 mb-16 max-w-3xl">
