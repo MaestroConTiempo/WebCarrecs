@@ -25,39 +25,37 @@ export default function CentreIALanding() {
           <nav className="hidden md:flex gap-8 text-sm font-medium">
             <a href="#problema" className="text-slate-600 hover:text-blue-900 transition">El problema</a>
             <a href="#programa" className="text-slate-600 hover:text-blue-900 transition">Programa</a>
-            <a href="#fases" className="text-slate-600 hover:text-blue-900 transition">Fases</a>
+            <a href="#fases" className="text-slate-600 hover:text-blue-900 transition">Exemples</a>
             <a href="#contacte" className="text-slate-600 hover:text-blue-900 transition">Contacte</a>
           </nav>
-          <button className="px-4 py-2 bg-blue-900 text-white rounded-md text-sm font-medium hover:bg-blue-950 transition">
-            Diagnòstic gratuït
-          </button>
         </div>
       </header>
 
       {/* HERO */}
       <section className="pt-32 pb-24 px-6 relative overflow-hidden">
-        {/* Decorative elements */}
-        <div 
+        <div
           className="absolute top-20 left-10 w-80 h-80 border border-slate-200 rounded-3xl opacity-20"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px)`,
-          }}
+          style={{ transform: `translateY(${scrollY * 0.2}px)` }}
         />
         <div className="absolute bottom-0 right-20 w-96 h-96 border border-slate-100 rounded-full opacity-10" />
-        
+
         <div className="max-w-5xl mx-auto relative z-10">
           <div className="inline-block mb-6 px-4 py-2 bg-slate-100 rounded-full text-xs font-black text-blue-900 uppercase tracking-widest">
             Per a directius i equips pedagògics
           </div>
-          
+
           <h1 className="text-7xl md:text-8xl font-black leading-tight mb-8 tracking-tight">
             Sistemes,
             <br />
             <span className="text-blue-900">no formació.</span>
           </h1>
-          
-          <p className="text-xl text-slate-600 mb-10 max-w-3xl leading-relaxed font-medium">
-            Implantem fluxos de treball amb IA que el claustre usa dia a dia. Informes que passaven de 18 hores a 2. Docents nous que treballen com els altres en una setmana. Sistemàtica, documentada, que queda al centre.
+
+          <p className="text-2xl text-slate-700 mb-4 max-w-3xl leading-relaxed font-bold">
+            No és una formació genèrica. És implementació real de sistemes de treball que necessiteu
+          </p>
+
+          <p className="text-lg text-slate-500 mb-10 max-w-3xl leading-relaxed">
+            Implantem fluxos de treball amb IA que el claustre usa dia a dia. Informes que passaven de 18 hores a 2. Una línia d'escola unificada, que tothom segueix. Sistemàtica, documentada, que queda al centre.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
@@ -65,28 +63,25 @@ export default function CentreIALanding() {
               Reserva diagnòstic (gratuït)
               <ArrowRight size={20} />
             </a>
-            <button className="px-8 py-5 border-2 border-slate-300 text-slate-900 rounded-lg font-bold hover:border-blue-900 hover:bg-slate-50 transition text-lg">
-              Veure cas pràctic
-            </button>
           </div>
 
           {/* Impact metrics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="border-l-4 border-blue-900 pl-6">
               <div className="text-5xl font-black text-blue-900">18h</div>
-              <div className="text-slate-600 text-sm mt-1">a 2h per docent/trimestre</div>
+              <div className="text-slate-600 text-sm mt-1">→ 2h per docent en informes</div>
             </div>
             <div className="border-l-4 border-blue-900 pl-6">
-              <div className="text-5xl font-black text-blue-900">1</div>
-              <div className="text-slate-600 text-sm mt-1">setmana integració docent nou</div>
+              <div className="text-5xl font-black text-blue-900">=</div>
+              <div className="text-slate-600 text-sm mt-1">Unifiquem la línia d'escola</div>
             </div>
             <div className="border-l-4 border-blue-900 pl-6">
-              <div className="text-5xl font-black text-blue-900">2-3</div>
+              <div className="text-5xl font-black text-blue-900">3</div>
               <div className="text-slate-600 text-sm mt-1">fluxos automatitzats</div>
             </div>
             <div className="border-l-4 border-blue-900 pl-6">
               <div className="text-5xl font-black text-blue-900">∞</div>
-              <div className="text-slate-600 text-sm mt-1">coherència en formatos</div>
+              <div className="text-slate-600 text-sm mt-1">Estandaritzem maneres de fer al centre</div>
             </div>
           </div>
         </div>
@@ -107,8 +102,8 @@ export default function CentreIALanding() {
               },
               {
                 icon: '⏱️',
-                title: 'Temps perseguint documentació',
-                desc: 'Docents en carpetes locals, fulls perduts, versions duplicades. El directiu passa 3 hores recopilant.'
+                title: 'Cada docent ho fa a la seva manera',
+                desc: 'Situacions d\'aprenentatge amb enfocaments diferents per cicles. Activitats dissenyades sense un criteri comú.'
               },
               {
                 icon: '🔄',
@@ -118,12 +113,12 @@ export default function CentreIALanding() {
               {
                 icon: '🚫',
                 title: 'IA en teoria, no en pràctica',
-                desc: 'Vau fer un curs. Niembrut. Ara cadascú usa AI o no. Zero protocol, zero seguretat, zero coherència.'
+                desc: 'Vau fer un curs. Ara cadascú usa AI o no. Zero protocol, zero seguretat, zero coherència.'
               },
               {
                 icon: '📋',
-                title: 'Redacció manual a fora d\'hores',
-                desc: 'Programacions, actes de reunió, materials. Docents redactant a casa perquè a classe no hi ha temps.'
+                title: 'Sense elaboració automàtica de materials',
+                desc: 'Programacions, actes de reunió, materials. Docents redactant a casa perquè a classe no hi ha temps. Cap sistema d\'elaboració automàtica al centre.'
               },
               {
                 icon: '🎯',
@@ -161,26 +156,20 @@ export default function CentreIALanding() {
               {
                 num: '01',
                 title: 'Pilot',
-                subtitle: '4 setmanes',
-                desc: 'Provem amb 1 cicle o equip. Implantem 1-2 fluxos reals. El centre veu el resultat sense compromís global.',
-                price: 'A partir de 600€',
+                desc: 'Provem amb 1 cicle o equip. Implantem fluxos reals. El centre veu el resultat sense compromís global.',
                 color: 'from-slate-100 to-slate-50'
               },
               {
                 num: '02',
                 title: 'Implantació',
-                subtitle: '5 sessions',
-                desc: 'Escalem a tot el claustre. Creem 2-3 fluxos estables, assistents personalitzats i manual operatiu complet.',
-                price: '1.250€',
+                desc: 'Escalem a tot el claustre. Creem 3 fluxos estables, assistents personalitzats i manual operatiu complet.',
                 color: 'from-blue-50 to-slate-50',
                 highlight: true
               },
               {
                 num: '03',
                 title: 'Expansió',
-                subtitle: 'Contínua',
                 desc: 'Nous fluxos segons necessitats. Comunicacions a famílies, programacions, seguiment. El sistema creix amb l\'escola.',
-                price: 'A convenir',
                 color: 'from-slate-100 to-slate-50'
               }
             ].map((phase, i) => (
@@ -196,12 +185,8 @@ export default function CentreIALanding() {
                 <div className={`text-5xl font-black mb-2 ${phase.highlight ? 'text-blue-900' : 'text-slate-400'}`}>
                   {phase.num}
                 </div>
-                <h3 className="text-3xl font-black mb-1">{phase.title}</h3>
-                <p className="text-sm text-slate-500 mb-4">{phase.subtitle}</p>
-                <p className="text-slate-700 leading-relaxed mb-6">{phase.desc}</p>
-                <div className={`text-lg font-black ${phase.highlight ? 'text-blue-900' : 'text-slate-900'}`}>
-                  {phase.price}
-                </div>
+                <h3 className="text-3xl font-black mb-4">{phase.title}</h3>
+                <p className="text-slate-700 leading-relaxed">{phase.desc}</p>
               </div>
             ))}
           </div>
@@ -234,14 +219,14 @@ export default function CentreIALanding() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black mb-6">Què queda al centre quan acabem</h2>
           <p className="text-xl text-slate-600 mb-16 max-w-3xl">
-            No és teòrica. No són certificats. Són sistemes que el claustre usa cada setmana.
+            No és teoria. No són certificats. Són sistemes que el claustre usa cada setmana.
           </p>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {[
               {
                 icon: <BookOpen size={32} className="text-blue-900" />,
-                title: '2-3 fluxos de treball automatitzats',
+                title: '3 fluxos de treball automatitzats',
                 desc: 'Processos que abans consumien hores ara funcionen amb plantilles i assistents. Exemple: informes trimestrals de 45 min/alumne a 2 min/alumne.'
               },
               {
@@ -331,18 +316,18 @@ export default function CentreIALanding() {
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <h2 className="text-4xl font-black mb-12">Centres que ja ho han implantat</h2>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {[
               {
-                quote: 'Crec que és la millor formació que he fet en temps, sobretot a l\'hora de facilitar la nostra feina.',
-                author: 'Cap d\'estudis',
-                school: 'CEIP Barcelona'
+                quote: 'Hem automatitzat la feina repetitiva i hem recuperat hores per a allò que importa. El claustre ara treballa de manera coordinada i els nous docents s\'incorporen en dies, no en setmanes.',
+                author: 'Jordi Gálvez',
+                school: 'Escola Riera Alta, Santa Coloma de Gramenet'
               },
               {
                 quote: 'Com a centre ens ha permès unificar el model de redacció dels informes de tota l\'escola. Ara les mestres van molt més relaxades a final dels trimestres.',
                 author: 'Directora',
-                school: 'Escola Riera Alta'
+                school: 'Escola Samuntada de Sabadell'
               }
             ].map((test, i) => (
               <div key={i} className="p-8 bg-white border-2 border-slate-200 rounded-2xl">
@@ -375,17 +360,17 @@ export default function CentreIALanding() {
             {[
               {
                 num: '01',
-                title: 'Sessió diagnòstica (gratuïta, 20 min)',
+                title: 'Sessió diagnòstica (gratuïta)',
                 desc: 'Identifiquem on es perd temps, quins processos cremen més i quins tienen més impacte si s\'automatitzen.'
               },
               {
                 num: '02',
-                title: 'Pilot amb un cicle o equip (4 setmanes)',
-                desc: 'Implantem 1-2 fluxos reals. El centre comprova el resultat avant de comprometre tot el claustre.'
+                title: 'Pilot amb un cicle o equip',
+                desc: 'Implantem fluxos reals. El centre comprova el resultat avant de comprometre tot el claustre.'
               },
               {
                 num: '03',
-                title: 'Implantació completa (5 sessions)',
+                title: 'Implantació completa',
                 desc: 'Escalem al centre: fluxos, assistents personalitzats, manual operatiu i criteris de privacitat.'
               },
               {
@@ -412,22 +397,22 @@ export default function CentreIALanding() {
       <section id="contacte" className="py-24 px-6 bg-blue-900 text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 border border-blue-700 rounded-full opacity-20" />
         <div className="absolute bottom-10 left-10 w-64 h-64 border border-blue-700 rounded-3xl opacity-10" />
-        
+
         <div className="max-w-4xl mx-auto relative z-10 text-center">
           <h2 className="text-6xl md:text-7xl font-black mb-6">Voleu explorar si encaixa?</h2>
           <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto">
-            En parlem durant 20 minuts on identifiquem els 2-3 punts on el vostre centre perd més temps. Sense pressió. Sense compromís. Diagnòstic gratuït.
+            En parlem durant 20 minuts on identifiquem els 3 punts on el vostre centre perd més temps. Sense pressió. Sense compromís. Diagnòstic gratuït.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a 
+            <a
               href="mailto:mestreambtemps@gmail.com?subject=IA EN MARXA"
               className="px-8 py-5 bg-white text-blue-900 rounded-lg font-black hover:bg-slate-100 transition flex items-center justify-center gap-3 text-lg"
             >
               Enviar correu
               <ArrowRight size={20} />
             </a>
-            <a 
+            <a
               href="https://wa.me/639525092?text=Hola%20Rubén%2C%20m%27interessa%20saber%20més%20sobre%20Centre%20IA%20en%20Marxa"
               className="px-8 py-5 border-2 border-white text-white rounded-lg font-black hover:bg-blue-800 transition text-lg"
             >
@@ -438,7 +423,7 @@ export default function CentreIALanding() {
           <div className="mt-12 text-blue-200">
             <p className="text-sm">mestreambtemps@gmail.com</p>
             <p className="text-sm">+34 639 525 092</p>
-            <p className="text-xs mt-4">Rubén Fabri | 15 anys de docència | Doctorand en educació digital</p>
+            <p className="text-xs mt-4">Rubén Fabri | +15 anys de docència | Secretari de l'escola | Automatitzant la feina a les escoles</p>
           </div>
         </div>
       </section>
