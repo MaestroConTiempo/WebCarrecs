@@ -205,40 +205,46 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">La realitat</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-                "El problema no és de formació en IA.<br />
-                <span className="text-blue-700">El problema és que els processos de gestió<br />del centre encara funcionen com fa 15 anys."</span>
+              <h2 className="text-3xl md:text-4xl font-black mb-4 leading-tight">
+                Els processos de gestió del centre<br />funcionen igual que fa 15 anys.
               </h2>
+              <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+                El problema no és de formació en IA. És que la feina mecànica s'ha acumulat durant anys i ningú ha tingut temps de resoldre-la.
+              </p>
             </div>
           </FadeItem>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
               {
+                icon: '📋',
                 title: 'Actes, actes i més actes',
                 desc: 'Consell escolar, claustre, equip directiu, comissions... Cada reunió genera un document que algú ha de redactar, formatar i arxivar.',
               },
               {
+                icon: '📚',
                 title: 'Dissenyar, unificar, acordar',
-                desc: 'Programacions didàctiques que s\'han de revisar. Criteris d\'avaluació que cada equip interpreta diferent. Activitats que haurien de seguir la metodologia de centre però cadascú fa la seva interpretació.',
+                desc: 'Programacions didàctiques que s\'han de revisar. Criteris d\'avaluació que cada equip interpreta diferent. Cadascú fa la seva interpretació.',
               },
               {
+                icon: '📄',
                 title: 'Certificats, comunicacions i memòries',
                 desc: 'Certificats un per un, memòria anual, pla anual... Feina mecànica que es repeteix cada curs.',
               },
             ].map((item, i) => (
               <FadeItem key={i} delay={i * 80}>
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-blue-100 h-full">
+                  <div className="text-4xl mb-4">{item.icon}</div>
                   <h3 className="font-black text-lg mb-3 text-slate-900">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+                  <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
                 </div>
               </FadeItem>
             ))}
           </div>
 
           <FadeItem delay={200}>
-            <div className="mt-12 text-center">
-              <p className="text-xl font-black text-slate-800 italic">
+            <div className="mt-10 bg-white border-l-4 border-blue-500 rounded-r-2xl px-8 py-6 max-w-3xl mx-auto">
+              <p className="text-slate-700 text-lg italic leading-relaxed">
                 "Si dediqueu més temps a paperassa que a les decisions que realment importen, aquest programa és per a vosaltres."
               </p>
             </div>
