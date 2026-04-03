@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Users, BookOpen, Globe, ArrowUpRight, ChevronDown } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
-// Each item observes itself individually — animates only when IT enters the viewport
 function FadeItem({ children, delay = 0, dir = 'up', className = '' }) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
@@ -85,20 +84,11 @@ function FaqItem({ question, answer }) {
 }
 
 export default function CarrecsIALanding() {
-  const [scrollY, setScrollY] = useState(0);
-  const [activePhase, setActivePhase] = useState(0);
-
-  const [formData, setFormData] = useState({ nom: '', centre: '', carrec: '', missatge: '' });
+  const [formData, setFormData] = useState({ nom: '', seminari: '', carrec: '', missatge: '' });
   const [formStatus, setFormStatus] = useState('idle');
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   const [metricsRef, metricsInView] = useInView(0.3);
-  const count20 = useCounter(20, metricsInView, 2500);
+  const count30 = useCounter(30, metricsInView, 2500);
   const count5  = useCounter(5,  metricsInView, 1800);
 
   const handleFormSubmit = async (e) => {
@@ -110,10 +100,10 @@ export default function CarrecsIALanding() {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: '91374749-c0ee-477c-9614-7b01b490676c',
-          subject: `Sol·licitud seminari càrrecs - ${formData.centre}`,
+          subject: `Sol·licitud seminari càrrecs - ${formData.seminari}`,
           from_name: formData.nom,
           nom: formData.nom,
-          centre: formData.centre,
+          seminari: formData.seminari,
           carrec: formData.carrec,
           missatge: formData.missatge,
         }),
@@ -126,108 +116,26 @@ export default function CarrecsIALanding() {
     }
   };
 
-  const phases = [
-    {
-      num: '01',
-      title: 'Diagnosi i disseny',
-      desc: 'Identifiquem conjuntament els processos que més temps consumeixen al vostre equip directiu: actes, comunicacions, certificats, programacions. Dissenyem el pla d\'automatització adaptat al vostre centre.',
-      icon: <BookOpen size={22} />,
-    },
-    {
-      num: '02',
-      title: 'Actes i reunions',
-      desc: 'Construïm el sistema d\'automatització d\'actes per al consell escolar, el claustre i l\'equip directiu. A partir de notes breus, l\'eina genera l\'acta completa en el format del centre.',
-      icon: <Users size={22} />,
-    },
-    {
-      num: '03',
-      title: 'Documents de gestió',
-      desc: 'Automatitzem la redacció de certificats, comunicacions per a famílies, convocatòries i informes de seguiment. Documents que passaven d\'una hora a menys de cinc minuts.',
-      icon: <Globe size={22} />,
-    },
-    {
-      num: '04',
-      title: 'Coordinació pedagògica',
-      desc: 'Creem eines per detectar incoherències entre programacions i currículum, generar rúbriques coherents i agilitzar el seguiment de les coordinacions de cicle.',
-      icon: <BookOpen size={22} />,
-    },
-    {
-      num: '05',
-      title: 'Consolidació i protocols',
-      desc: 'Integrem tots els sistemes en el flux de treball diari. Elaborem els protocols d\'ús intern perquè tot l\'equip directiu pugui usar les eines de manera autònoma i consistent.',
-      icon: <ArrowUpRight size={22} />,
-    },
-  ];
-
-  const outputs = [
-    { icon: '📝', title: 'Sistema d\'actes automatitzat', desc: 'Genera actes completes del consell escolar, claustre i equip directiu a partir de notes breus.' },
-    { icon: '✉️', title: 'Plantilles intel·ligents', desc: 'Comunicacions per a famílies, certificats i convocatòries en el format oficial del centre en minuts.' },
-    { icon: '📊', title: 'Eines de coordinació pedagògica', desc: 'Detecció d\'incoherències entre programacions, seguiment de cicles i generació de rúbriques.' },
-    { icon: '🗂️', title: 'Biblioteca de prompts del centre', desc: 'Biblioteca personalitzada amb els prompts que funcionen per als vostres processos específics.' },
-    { icon: '📋', title: 'Protocols d\'ús intern', desc: 'Guies pràctiques perquè tot l\'equip directiu pugui usar els sistemes de manera autònoma.' },
-    { icon: '🔄', title: 'Memòries i informes anuals', desc: 'Eines per agilitzar la redacció de memòries de final de curs i informes de seguiment de projectes.' },
-  ];
-
-  const examples = [
-    {
-      before: 'Redactar l\'acta del consell escolar ocupava entre 2 i 3 hores, entre prendre notes i estructurar-ho tot.',
-      after: 'L\'assistent genera l\'acta completa a partir de notes breus i la formata automàticament en el format oficial del centre.',
-    },
-    {
-      before: 'Cada comunicació per a famílies requeria revisar el to, adaptar el format i evitar errors de coherència.',
-      after: 'El sistema genera comunicacions professionals en menys de tres minuts a partir d\'una idea o un esquema.',
-    },
-    {
-      before: 'Detectar si una programació de cicle era coherent amb el currículum exigia una revisió manual document per document.',
-      after: 'L\'eina analitza les programacions i assenyala incoherències respecte al currículum oficial en qüestió de segons.',
-    },
-    {
-      before: 'Els certificats d\'assistència o d\'exercici del càrrec es redactaven un a un, buscant el model cada vegada.',
-      after: 'L\'assistent redacta els certificats en el format oficial del centre en pocs clics, amb les dades introduïdes una sola vegada.',
-    },
-  ];
-
-  const testimonials = [
-    {
-      quote: 'Fa tres sessions que no he hagut de quedar-me fins les vuit per redactar l\'acta del claustre. Semblava impossible.',
-      name: 'Montserrat Valls',
-      role: 'Directora',
-      school: 'Escola Puig d\'en Cals',
-    },
-    {
-      quote: 'El que més m\'ha sorprès és que no hem après IA en abstracte. Hem muntat eines que ens funcionen des del primer dia.',
-      name: 'Ricard Puig',
-      role: 'Cap d\'estudis',
-      school: 'Institut Miralles',
-    },
-    {
-      quote: 'Les comunicacions per a famílies ara les fem en minuts. I queden millor que abans. L\'equip no es pot creure el canvi.',
-      name: 'Anna Ferrer',
-      role: 'Coordinadora pedagògica',
-      school: 'Escola La Roureda',
-    },
-  ];
-
   const faqs = [
     {
       q: 'Necessitem coneixements previs d\'IA?',
-      a: 'No. El seminari està dissenyat per a equips directius que no han treballat mai amb IA. Partim dels vostres processos reals i construïm pas a pas. Al final de cada sessió teniu eines que podeu usar de manera autònoma.',
-    },
-    {
-      q: 'Com és el format del seminari?',
-      a: 'Cinc sessions presencials al vostre centre, de dues hores cadascuna. Entre sessions, teniu suport per correu per resoldre dubtes i ajustar les eines. El ritme l\'adaptem a la vostra disponibilitat.',
+      a: 'No. El programa parteix de zero i es construeix sobre les vostres tasques reals. No cal saber res d\'IA per endavant. Cada sessió és demostració + pràctica guiada + construcció d\'eines pròpies.',
     },
     {
       q: 'Per a quins càrrecs és útil?',
-      a: 'Directors, caps d\'estudis, secretaris, coordinadors pedagògics i coordinadors de cicle. Treballem els processos que comparteix tot l\'equip directiu, però adaptem les eines a les funcions de cada rol.',
+      a: 'Per a qualsevol càrrec de gestió educativa: secretaris, caps d\'estudis, coordinadors pedagògics, directors... Qualsevol que gestioni documentació repetitiva — actes, informes, comunicacions, programacions.',
     },
     {
-      q: 'Quins documents i processos podem automatitzar?',
-      a: 'Actes de reunions (consell escolar, claustre, equip directiu), comunicacions per a famílies, certificats, convocatòries, programacions, informes de seguiment i memòries anuals. Partim de la vostra realitat per decidir on l\'impacte és més gran.',
+      q: 'On es fan les sessions?',
+      a: 'Presencial i totalment personalitzat al perfil del seminari i/o càrrec. Ens desplacem al vostre centre o espai de formació. El programa s\'adapta a les necessitats concretes del vostre grup.',
     },
     {
-      q: 'Funciona amb les eines que ja fem servir?',
-      a: 'Sí. Treballem amb les eines que ja teniu al centre: Google Workspace, Microsoft 365, o el que useu habitualment. No cal instal·lar res especial ni canviar de plataforma.',
+      q: 'Quin és el preu del programa?',
+      a: 'La proposta de preu és personalitzada segons el número de sessions i la mida del grup. Fem una trucada de 20 minuts per identificar les necessitats del seminari i us enviem una proposta concreta.',
+    },
+    {
+      q: 'Amb quines eines treballem?',
+      a: 'Construïm assistents d\'IA i fluxos de treball adaptats al vostre servei. No cal instal·lar cap programari especial. Les eines que construïu durant el programa queden vostres i les podeu usar des del primer dia.',
     },
   ];
 
@@ -236,7 +144,6 @@ export default function CarrecsIALanding() {
 
       {/* ── HERO ── */}
       <section className="relative min-h-screen flex flex-col justify-center bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white overflow-hidden">
-        {/* Subtle grid texture */}
         <div
           className="absolute inset-0 opacity-5"
           style={{
@@ -252,7 +159,7 @@ export default function CarrecsIALanding() {
         <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
           <FadeItem delay={0}>
             <p className="text-blue-300 text-sm font-bold tracking-widest uppercase mb-6">
-              Seminaris d'IA per a equips directius
+              Programa d'automatització per a seminaris de càrrecs de gestió educativa
             </p>
           </FadeItem>
 
@@ -275,14 +182,14 @@ export default function CarrecsIALanding() {
               href="#contacte"
               className="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-400 text-white font-bold text-lg px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl shadow-blue-900/40"
             >
-              Sol·licita una sessió informativa
+              Voleu portar el programa al vostre seminari?
               <ArrowRight size={20} />
             </a>
           </FadeItem>
 
           <FadeItem delay={400}>
             <p className="mt-8 text-slate-400 text-sm">
-              Per a directors, caps d'estudis, coordinadors pedagògics i secretaris
+              Per a secretaris, caps d'estudis, coordinadors pedagògics i directors
             </p>
           </FadeItem>
         </div>
@@ -292,214 +199,399 @@ export default function CarrecsIALanding() {
         </div>
       </section>
 
-      {/* ── PROBLEMA ── */}
+      {/* ── LA REALITAT ── */}
       <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-5xl mx-auto">
           <FadeItem>
-            <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">El problema real</p>
-            <h2 className="text-4xl md:text-5xl font-black mb-8 leading-tight">
-              El problema no és de formació.<br />
-              <span className="text-blue-700">És de processos.</span>
-            </h2>
-          </FadeItem>
-          <FadeItem delay={100}>
-            <p className="text-xl text-slate-600 leading-relaxed mb-12 max-w-3xl mx-auto">
-              Els processos de gestió del centre funcionen igual que fa quinze anys.
-              Actes que triguen hores. Comunicacions que es reescriuen des de zero.
-              Documents que es dupliquen. I vosaltres, enmig de tot, sense temps per al que realment importa.
-            </p>
+            <div className="text-center mb-16">
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">La realitat</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+                "El problema no és de formació en IA.<br />
+                <span className="text-blue-700">El problema és que els processos de gestió<br />del centre encara funcionen com fa 15 anys."</span>
+              </h2>
+            </div>
           </FadeItem>
 
-          <div className="grid md:grid-cols-2 gap-6 text-left">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: '📋', text: 'Actes de reunions que triguen entre una i tres hores a redactar i revisar.' },
-              { icon: '✉️', text: 'Comunicacions per a famílies que es reescriuen des de zero cada vegada.' },
-              { icon: '📄', text: 'Certificats i convocatòries que busqueu en carpetes antigues per copiar el format.' },
-              { icon: '📚', text: 'Programacions i memòries que s\'acumulen sense que ningú tingui temps de revisar-les bé.' },
+              {
+                title: 'Actes, actes i més actes',
+                desc: 'Consell escolar, claustre, equip directiu, comissions... Cada reunió genera un document que algú ha de redactar, formatar i arxivar.',
+              },
+              {
+                title: 'Dissenyar, unificar, acordar',
+                desc: 'Programacions didàctiques que s\'han de revisar. Criteris d\'avaluació que cada equip interpreta diferent. Activitats que haurien de seguir la metodologia de centre però cadascú fa la seva interpretació.',
+              },
+              {
+                title: 'Certificats, comunicacions i memòries',
+                desc: 'Certificats un per un, memòria anual, pla anual... Feina mecànica que es repeteix cada curs.',
+              },
             ].map((item, i) => (
               <FadeItem key={i} delay={i * 80}>
-                <div className="bg-white rounded-2xl p-6 shadow-sm border border-blue-100 flex gap-4">
-                  <span className="text-2xl flex-shrink-0">{item.icon}</span>
-                  <p className="text-slate-700 leading-relaxed">{item.text}</p>
+                <div className="bg-white rounded-2xl p-8 shadow-sm border border-blue-100 h-full">
+                  <h3 className="font-black text-lg mb-3 text-slate-900">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
               </FadeItem>
             ))}
           </div>
 
           <FadeItem delay={200}>
-            <p className="mt-12 text-2xl font-black text-slate-800">
+            <div className="mt-12 text-center">
+              <p className="text-xl font-black text-slate-800 italic">
+                "Si dediqueu més temps a paperassa que a les decisions que realment importen, aquest programa és per a vosaltres."
+              </p>
+            </div>
+          </FadeItem>
+        </div>
+      </section>
+
+      {/* ── AIXÒ NO ÉS UN ALTRE CURS ── */}
+      <section ref={metricsRef} className="py-24 px-6 bg-slate-900 text-white">
+        <div className="max-w-5xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-4">Això no és un altre curs de IA</h2>
+            </div>
+          </FadeItem>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <FadeItem delay={0}>
+              <div className="space-y-4">
+                {[
+                  'No és una xerrada sobre ChatGPT i eines d\'IA que s\'obliden en dues setmanes',
+                  'No són llistes de prompts genèrics que no resolen els vostres processos reals',
+                  'No farem demostracions impressionants que després costa replicar',
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <span className="text-red-400 font-black text-xl flex-shrink-0 mt-0.5">✕</span>
+                    <p className="text-slate-300 leading-relaxed">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeItem>
+            <FadeItem delay={100}>
+              <div className="space-y-4">
+                {[
+                  'Aquí aprendreu a construir fluxos de treball per a les vostres tasques reals',
+                  'Crear assistents d\'IA configurats per al tipus de documentació que gestioneu',
+                  'Sortir de cada sessió amb eines muntades que podeu usar l\'endemà',
+                ].map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <span className="text-blue-400 font-black text-xl flex-shrink-0 mt-0.5">✓</span>
+                    <p className="text-slate-200 leading-relaxed font-medium">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </FadeItem>
+          </div>
+
+          <FadeItem delay={150}>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center border-t border-slate-700 pt-16">
+              <div>
+                <p className="text-blue-400 font-black whitespace-nowrap" style={{ fontSize: '3rem' }}>
+                  {count30}min → 5min
+                </p>
+                <p className="text-slate-300 text-lg mt-2 font-semibold">Reduïm</p>
+                <p className="text-slate-400 text-sm mt-1">el temps per redactar una acta de reunió</p>
+              </div>
+              <div>
+                <p className="font-black text-blue-400" style={{ fontSize: '3rem' }}>≡</p>
+                <p className="text-slate-300 text-lg mt-2 font-semibold">Unifiquem</p>
+                <p className="text-slate-400 text-sm mt-1">formats i criteris per a tot l'equip, independentment de qui elabora el document</p>
+              </div>
+              <div>
+                <p className="font-black text-blue-400" style={{ fontSize: '3rem' }}>{count5}</p>
+                <p className="text-slate-300 text-lg mt-2 font-semibold">Sessions</p>
+                <p className="text-slate-400 text-sm mt-1">pràctiques per construir un sistema complet que funciona</p>
+              </div>
+            </div>
+          </FadeItem>
+
+          <FadeItem delay={200}>
+            <p className="text-center text-blue-300 text-xl font-black mt-16 italic">
               "No parlem d'IA. Muntem sistemes de treball que funcionen."
             </p>
           </FadeItem>
         </div>
       </section>
 
-      {/* ── COST REAL (dark metrics) ── */}
-      <section ref={metricsRef} className="py-24 px-6 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto text-center">
-          <FadeItem>
-            <h2 className="text-3xl md:text-4xl font-black mb-4">El cost real que no surt als informes</h2>
-            <p className="text-slate-400 text-lg mb-16">Hores de lideratge convertides en burocracia</p>
-          </FadeItem>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <FadeItem delay={0}>
-              <div>
-                <p className="text-blue-400 font-black whitespace-nowrap" style={{ fontSize: '3rem' }}>
-                  {count20}h → &lt;4h
-                </p>
-                <p className="text-slate-300 text-lg mt-2 font-semibold">Reduïm</p>
-                <p className="text-slate-400 text-sm mt-1">setmanals en tasques mecàniques de gestió</p>
-              </div>
-            </FadeItem>
-            <FadeItem delay={100}>
-              <div>
-                <p className="font-black text-blue-400" style={{ fontSize: '3rem' }}>≡</p>
-                <p className="text-slate-300 text-lg mt-2 font-semibold">Unifiquem</p>
-                <p className="text-slate-400 text-sm mt-1">tots els documents en un únic sistema coherent</p>
-              </div>
-            </FadeItem>
-            <FadeItem delay={200}>
-              <div>
-                <p className="font-black text-blue-400" style={{ fontSize: '3rem' }}>{count5}</p>
-                <p className="text-slate-300 text-lg mt-2 font-semibold">Automatitzem</p>
-                <p className="text-slate-400 text-sm mt-1">tipus de documents que es generen repetitivament cada curs</p>
-              </div>
-            </FadeItem>
-          </div>
-        </div>
-      </section>
-
-      {/* ── PROGRAMA (5 sessions) ── */}
+      {/* ── SOBRE QUÈ TREBALLAREM ── */}
       <section className="py-24 px-6 bg-white">
         <div className="max-w-5xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
-              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">El seminari</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-6">Cinc sessions. Eines reals.</h2>
-              <p className="text-slate-600 text-xl max-w-2xl mx-auto">
-                Cada sessió té un objectiu concret. Sortiu amb un sistema funcionant, no amb apunts.
-              </p>
-            </div>
-          </FadeItem>
-
-          <div className="flex flex-col md:flex-row gap-3 mb-8 justify-center flex-wrap">
-            {phases.map((p, i) => (
-              <button
-                key={i}
-                onClick={() => setActivePhase(i)}
-                className={`px-5 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
-                  activePhase === i
-                    ? 'bg-blue-700 text-white shadow-lg'
-                    : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
-                }`}
-              >
-                Sessió {p.num}
-              </button>
-            ))}
-          </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-slate-50 rounded-3xl p-10 border border-blue-100 min-h-48 transition-all duration-300">
-            <div className="flex items-start gap-6">
-              <div className="bg-blue-700 text-white rounded-2xl p-4 flex-shrink-0">
-                {phases[activePhase].icon}
-              </div>
-              <div>
-                <p className="text-blue-600 font-bold text-sm mb-2">Sessió {phases[activePhase].num}</p>
-                <h3 className="text-2xl font-black mb-4">{phases[activePhase].title}</h3>
-                <p className="text-slate-600 text-lg leading-relaxed">{phases[activePhase].desc}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── QUÈ TINDRAN ── */}
-      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
-        <div className="max-w-5xl mx-auto">
-          <FadeItem>
-            <div className="text-center mb-16">
-              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Resultats concrets</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-6">Què tindrà el vostre equip</h2>
-              <p className="text-slate-600 text-xl max-w-2xl mx-auto">
-                No uns apunts sobre IA. Eines que funcionen des del primer dia.
-              </p>
-            </div>
-          </FadeItem>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {outputs.map((item, i) => (
-              <FadeItem key={i} delay={i * 80}>
-                <div className="bg-white rounded-2xl p-7 shadow-sm border border-blue-100 h-full">
-                  <div className="text-3xl mb-4">{item.icon}</div>
-                  <h3 className="font-black text-lg mb-2">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
-                </div>
-              </FadeItem>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── EXEMPLES REALS ── */}
-      <section className="py-24 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          <FadeItem>
-            <div className="text-center mb-16">
-              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Casos pràctics</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-6">Exemples reals del seminari</h2>
-            </div>
-          </FadeItem>
-
-          <div className="grid md:grid-cols-2 gap-6">
-            {examples.map((ex, i) => (
-              <FadeItem key={i} delay={i * 80} dir={i % 2 === 0 ? 'left' : 'right'}>
-                <div className="rounded-2xl overflow-hidden border border-slate-100 shadow-sm h-full">
-                  <div className="bg-red-50 p-6 border-b border-red-100">
-                    <p className="text-xs font-bold text-red-600 uppercase tracking-widest mb-2">Abans</p>
-                    <p className="text-slate-700 leading-relaxed text-sm">{ex.before}</p>
-                  </div>
-                  <div className="bg-green-50 p-6">
-                    <p className="text-xs font-bold text-green-700 uppercase tracking-widest mb-2">Amb el sistema</p>
-                    <p className="text-slate-700 leading-relaxed text-sm">{ex.after}</p>
-                  </div>
-                </div>
-              </FadeItem>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── TESTIMONIS ── */}
-      <section className="py-24 px-6 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto">
-          <FadeItem>
-            <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Qui ho ha provat, ho repeteix</h2>
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">El programa</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-4">Sobre què treballarem</h2>
+              <p className="text-slate-500 text-lg italic">"Cada sessió treballa sobre tasques reals. Res de teoria, res de demostracions que no pugueu replicar."</p>
             </div>
           </FadeItem>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((t, i) => (
-              <FadeItem key={i} delay={i * 100}>
-                <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700 h-full flex flex-col">
-                  <p className="text-slate-200 leading-relaxed text-base flex-1 italic mb-8">
-                    "{t.quote}"
-                  </p>
+            {[
+              {
+                num: '1',
+                title: 'Documentació automàtica',
+                desc: 'Actes de reunions en minuts. Informes de seguiment i memòries generades a partir de notes breus.',
+              },
+              {
+                num: '2',
+                title: 'Coherència de l\'equip',
+                desc: 'Formats i estàndards comuns per a tot l\'equip. Assistents configurats amb els criteris propis del vostre servei o seminari. Documentació coherent independentment de qui l\'elabora.',
+              },
+              {
+                num: '3',
+                title: 'Continuïtat i onboarding',
+                desc: 'Assistents d\'IA configurats amb els criteris i formats del vostre servei. Fluxos de treball que queden documentats i reutilitzables. Un sistema que el vostre equip pot usar des del primer dia sense dependre de ningú extern.',
+              },
+            ].map((item, i) => (
+              <FadeItem key={i} delay={i * 80}>
+                <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full">
+                  <div className="w-12 h-12 rounded-full bg-blue-700 text-white font-black text-xl flex items-center justify-center mb-5">
+                    {item.num}
+                  </div>
+                  <h3 className="font-black text-xl mb-3">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </FadeItem>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── COM FUNCIONA ── */}
+      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
+        <div className="max-w-4xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-16">
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Les sessions</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-4">Com funciona el programa</h2>
+              <p className="text-slate-500 text-lg italic">"Cada sessió és un pas cap a un sistema complet"</p>
+            </div>
+          </FadeItem>
+
+          <div className="space-y-4">
+            {[
+              {
+                sessions: 'Sessions 1–2',
+                subtitle: 'Criteris + primers fluxos',
+                desc: 'Criteri comú d\'ús de la IA al centre. Primers fluxos de documentació automatitzada: informes, actes, comunicacions.',
+                note: 'Basat en tasques reals dels assistents.',
+              },
+              {
+                sessions: 'Sessions 3–4',
+                subtitle: 'Assistents + coherència',
+                desc: 'Assistents personalitzats per a programacions, actes, documentació. Fluxos de coherència i línia d\'escola.',
+                note: 'Cada assistent surt amb eines configurades per al seu servei i la seva metodologia.',
+              },
+              {
+                sessions: 'Sessió 5',
+                subtitle: 'Consolidació del sistema',
+                desc: 'Protocols d\'implantació per a noves situacions.',
+                note: 'Guia per portar el que heu après al vostre equip i mantenir el sistema viu.',
+              },
+              {
+                sessions: 'Format',
+                subtitle: 'Presencial i personalitzat',
+                desc: 'Totalment adaptat al perfil del seminari i/o càrrec.',
+                note: 'Demostració + pràctica guiada + construcció d\'eines pròpies a cada sessió.',
+              },
+            ].map((item, i) => (
+              <FadeItem key={i} delay={i * 60}>
+                <div className="bg-white rounded-2xl p-6 border border-blue-100 shadow-sm grid md:grid-cols-3 gap-4 items-start">
                   <div>
-                    <p className="font-black text-white">{t.name}</p>
-                    <p className="text-blue-400 text-sm font-semibold">{t.role}</p>
-                    <p className="text-slate-500 text-sm">{t.school}</p>
+                    <p className="font-black text-blue-700 text-lg">{item.sessions}</p>
+                    <p className="font-bold text-slate-800">{item.subtitle}</p>
+                  </div>
+                  <p className="text-slate-700 leading-relaxed">{item.desc}</p>
+                  <p className="text-blue-600 text-sm font-semibold leading-relaxed">{item.note}</p>
+                </div>
+              </FadeItem>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── AMB QUÈ SORTIREU ── */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-16">
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Resultats</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-4">Amb què sortireu d'aquest programa</h2>
+              <p className="text-slate-600 text-lg">No sortiu amb apunts. Sortiu amb sistemes muntats i la capacitat d'implantar-los.</p>
+            </div>
+          </FadeItem>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            <FadeItem delay={0} dir="left">
+              <div className="bg-blue-50 rounded-2xl p-8 border border-blue-100 h-full">
+                <h3 className="font-black text-xl text-blue-800 mb-6">Automatitzar la vostra documentació</h3>
+                <ul className="space-y-4">
+                  {[
+                    'Sabreu crear fluxos per generar informes, actes, comunicacions i documentació amb IA',
+                    'Sabreu adaptar-los al format i criteris del vostre lloc de treball',
+                    'Aprendreu a crear assistents i plantilles per automatitzar la vostra feina repetitiva',
+                    'Tot el que apreneu ho podreu implantar i ensenyar al vostre equip',
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                      <span className="text-blue-600 font-black mt-0.5 flex-shrink-0">→</span>
+                      <span className="text-slate-700 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeItem>
+
+            <FadeItem delay={100} dir="right">
+              <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 h-full">
+                <h3 className="font-black text-xl text-slate-800 mb-6">Construir coherència i continuïtat</h3>
+                <ul className="space-y-4">
+                  {[
+                    'Guies per transferir els fluxos de treball a altres situacions',
+                    'Assistents configurats amb els criteris i formats propis del vostre servei',
+                    'No sortiu amb apunts. Sortiu amb sistemes muntats i la capacitat d\'implantar-los',
+                  ].map((item, i) => (
+                    <li key={i} className="flex gap-3 items-start">
+                      <span className="text-slate-500 font-black mt-0.5 flex-shrink-0">→</span>
+                      <span className="text-slate-700 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </FadeItem>
+          </div>
+        </div>
+      </section>
+
+      {/* ── EL QUE CANVIA ── */}
+      <section className="py-24 px-6 bg-slate-900 text-white">
+        <div className="max-w-5xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-4">El que canvia quan apliqueu el que aprendreu aquí</h2>
+              <p className="text-slate-400 text-lg italic">"Multipliqueu l'estalvi per cada càrrec, cada docent i cada trimestre."</p>
+            </div>
+          </FadeItem>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: 'Actes i documentació',
+                before: '20–30 min per acta, redacció manual post-reunió, format diferent segons qui escriu.',
+                after: 'Acta generada en 5 minuts amb el format oficial del vostre servei.',
+              },
+              {
+                title: 'Informes i memòries',
+                before: 'Redacció des de zero cada vegada, hores per document, sense plantilla comuna.',
+                after: 'Assistent que genera l\'esborrany amb els criteris i format propis del vostre servei. El professional revisa i ajusta.',
+              },
+              {
+                title: 'Transferència a noves situacions',
+                before: 'Cada vegada que uses la IA obtens un resultat diferent.',
+                after: 'Assistents configurats amb les instruccions i criteris propis del vostre servei. Sempre el mateix resultat, independentment de qui l\'usa.',
+              },
+            ].map((item, i) => (
+              <FadeItem key={i} delay={i * 80}>
+                <div className="h-full flex flex-col">
+                  <h3 className="font-black text-lg text-white mb-4">{item.title}</h3>
+                  <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-5 mb-3 flex-1">
+                    <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Abans</p>
+                    <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
+                  </div>
+                  <div className="bg-blue-900/30 border border-blue-600/40 rounded-xl p-5">
+                    <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Després</p>
+                    <p className="text-slate-200 text-sm leading-relaxed">{item.after}</p>
                   </div>
                 </div>
               </FadeItem>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── GARANTIA ── */}
+      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
+        <div className="max-w-5xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-16">
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">La garantia</p>
+              <h2 className="text-4xl md:text-5xl font-black">Garantia del programa</h2>
+            </div>
+          </FadeItem>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {[
+              {
+                num: '01',
+                title: 'Garantia de resultats',
+                desc: 'Aconseguir com a mínim 2 fluxos de treball funcionals i aplicables a la vostra realitat.',
+              },
+              {
+                num: '02',
+                title: 'El risc real',
+                desc: 'El risc no és invertir en aquest programa. El risc és continuar un any més amb la mateixa càrrega de paperassa.',
+              },
+              {
+                num: '03',
+                title: 'Sense criteris comuns',
+                desc: 'Càrrecs cremats fent feina mecànica i sense un sistema que realment funcioni en pilot automàtic.',
+              },
+              {
+                num: '04',
+                title: 'Perdre hores cada setmana',
+                desc: 'Cada trimestre les mateixes hores en informes, actes i documentació. Hores que no tornaran i que es podrien automatitzar.',
+              },
+            ].map((item, i) => (
+              <FadeItem key={i} delay={i * 80}>
+                <div className="bg-white rounded-2xl p-8 border border-blue-100 shadow-sm h-full">
+                  <p className="text-blue-500 font-black text-2xl mb-3">{item.num}</p>
+                  <h3 className="font-black text-lg mb-2">{item.title}</h3>
+                  <p className="text-slate-600 leading-relaxed">{item.desc}</p>
+                </div>
+              </FadeItem>
+            ))}
+          </div>
+
+          <FadeItem delay={200}>
+            <p className="text-center mt-10 text-slate-600 font-semibold text-lg">
+              Proposta de preu per seminari: personalitzada segons número de sessions i mida del grup.
+            </p>
+          </FadeItem>
+        </div>
+      </section>
+
+      {/* ── QUI HI HA DARRERE ── */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-12">
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Qui hi ha darrere</p>
+              <h2 className="text-4xl md:text-5xl font-black">Rubén Fabri</h2>
+            </div>
+          </FadeItem>
+
+          <div className="space-y-6">
+            <FadeItem delay={0}>
+              <div className="bg-slate-50 border-l-4 border-blue-500 rounded-r-2xl p-8">
+                <p className="text-slate-700 text-lg leading-relaxed italic">
+                  +15 anys de mestre a primària. Conec la realitat de l'aula, el claustre i les reunions de cicle. Parlo des de dins del sector, no des de fora.
+                </p>
+              </div>
+            </FadeItem>
+            <FadeItem delay={100}>
+              <div className="bg-slate-50 border-l-4 border-blue-300 rounded-r-2xl p-8">
+                <p className="text-slate-700 text-lg leading-relaxed italic">
+                  Sóc el secretari de l'escola. Sé què és fer actes, certificats, memòries, reunions... No parlo de teoria — visc cada dia la paperassa dels càrrecs. Especialista en automatització i IA aplicada. No ensenyo eines — ensenyo a muntar sistemes.
+                </p>
+              </div>
+            </FadeItem>
           </div>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-24 px-6 bg-white">
+      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
         <div className="max-w-3xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
@@ -509,7 +601,7 @@ export default function CarrecsIALanding() {
           </FadeItem>
 
           <FadeItem delay={100}>
-            <div className="bg-slate-50 rounded-3xl p-8 border border-slate-100">
+            <div className="bg-white rounded-3xl p-8 border border-slate-100">
               {faqs.map((f, i) => (
                 <FaqItem key={i} question={f.q} answer={f.a} />
               ))}
@@ -523,12 +615,14 @@ export default function CarrecsIALanding() {
         <div className="max-w-2xl mx-auto text-center">
           <FadeItem>
             <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
-              Parleu amb nosaltres.<br />
-              <span className="text-blue-300">Sense compromís.</span>
+              Voleu portar aquest programa<br />
+              <span className="text-blue-300">al vostre seminari?</span>
             </h2>
-            <p className="text-blue-200 text-lg mb-12 leading-relaxed">
-              Expliqueu-nos en quin centre treballeu i quins processos us fan perdre més temps.
-              Respostem en menys de 24 hores amb una proposta concreta.
+            <p className="text-blue-200 text-lg mb-4 leading-relaxed">
+              Escriviu-me i adaptem el programa al perfil i les necessitats del vostre grup de treball.
+            </p>
+            <p className="text-blue-300 text-base mb-12">
+              Fem una trucada de 20 minuts per identificar les necessitats del seminari i veure com encaixem el programa.
             </p>
           </FadeItem>
 
@@ -537,7 +631,7 @@ export default function CarrecsIALanding() {
               <div className="bg-green-800/40 border border-green-500/40 rounded-2xl p-10 text-center">
                 <p className="text-4xl mb-4">✅</p>
                 <p className="text-xl font-black text-green-300 mb-2">Rebut!</p>
-                <p className="text-green-200">Us contactem en menys de 24 hores.</p>
+                <p className="text-green-200">Us contactem en menys de 24 hores per organitzar la trucada.</p>
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="space-y-4 text-left">
@@ -552,37 +646,37 @@ export default function CarrecsIALanding() {
                   />
                   <input
                     type="text"
-                    placeholder="Nom del centre"
+                    placeholder="Nom del seminari o servei"
                     required
-                    value={formData.centre}
-                    onChange={e => setFormData({ ...formData, centre: e.target.value })}
+                    value={formData.seminari}
+                    onChange={e => setFormData({ ...formData, seminari: e.target.value })}
                     className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition"
                   />
                 </div>
                 <input
                   type="text"
-                  placeholder="Càrrec (directora, cap d'estudis, coordinadora...)"
+                  placeholder="Càrrec (secretari, cap d'estudis, coordinadora...)"
                   required
                   value={formData.carrec}
                   onChange={e => setFormData({ ...formData, carrec: e.target.value })}
                   className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition"
                 />
                 <textarea
-                  placeholder="Quin procés us fa perdre més temps? (opcional)"
+                  placeholder="Quina és la tasca que us fa perdre més temps? (opcional)"
                   rows={4}
                   value={formData.missatge}
                   onChange={e => setFormData({ ...formData, missatge: e.target.value })}
                   className="w-full px-5 py-4 rounded-xl bg-white/10 border border-white/20 text-white placeholder-blue-300 focus:outline-none focus:border-blue-400 focus:bg-white/15 transition resize-none"
                 />
                 {formStatus === 'error' && (
-                  <p className="text-red-300 text-sm text-center">Hi ha hagut un error. Torneu-ho a provar o escriviu-nos directament.</p>
+                  <p className="text-red-300 text-sm text-center">Hi ha hagut un error. Torneu-ho a provar o escriviu-nos directament a mestreambtemps@gmail.com</p>
                 )}
                 <button
                   type="submit"
                   disabled={formStatus === 'sending'}
                   className="w-full flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-400 disabled:opacity-50 text-white font-bold text-lg px-8 py-5 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl"
                 >
-                  {formStatus === 'sending' ? 'Enviant...' : 'Sol·licita informació'}
+                  {formStatus === 'sending' ? 'Enviant...' : 'Sol·licita una trucada de 20 minuts'}
                   {formStatus !== 'sending' && <ArrowRight size={20} />}
                 </button>
               </form>
@@ -594,7 +688,7 @@ export default function CarrecsIALanding() {
       {/* ── FOOTER ── */}
       <footer className="py-10 px-6 bg-slate-950 text-slate-400 text-center text-sm">
         <p className="font-bold text-white mb-1">Mestre amb Temps</p>
-        <p>© 2026 Mestre amb Temps · Seminaris d'IA per a equips directius</p>
+        <p>© 2026 Mestre amb Temps · Programa d'automatització per a seminaris de càrrecs de gestió educativa</p>
         <p className="mt-2">
           <a href="mailto:mestreambtemps@gmail.com" className="hover:text-blue-400 transition">
             mestreambtemps@gmail.com
