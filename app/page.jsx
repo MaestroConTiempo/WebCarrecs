@@ -46,19 +46,22 @@ function useInView(threshold = 0.2) {
   return [ref, inView];
 }
 
-function useCounter(target, inView, duration = 2500) {
+function useCounter(target, inView, duration = 2500, startDelay = 1000) {
   const [count, setCount] = useState(0);
   useEffect(() => {
     if (!inView) return;
-    let current = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      current += increment;
-      if (current >= target) { setCount(target); clearInterval(timer); }
-      else { setCount(Math.floor(current)); }
-    }, 16);
-    return () => clearInterval(timer);
-  }, [inView, target, duration]);
+    let timer;
+    const timeout = setTimeout(() => {
+      let current = 0;
+      const increment = target / (duration / 16);
+      timer = setInterval(() => {
+        current += increment;
+        if (current >= target) { setCount(target); clearInterval(timer); }
+        else { setCount(Math.floor(current)); }
+      }, 16);
+    }, startDelay);
+    return () => { clearTimeout(timeout); clearInterval(timer); };
+  }, [inView, target, duration, startDelay]);
   return count;
 }
 
@@ -88,8 +91,8 @@ export default function CarrecsIALanding() {
   const [formStatus, setFormStatus] = useState('idle');
 
   const [metricsRef, metricsInView] = useInView(0.3);
-  const count30 = useCounter(30, metricsInView, 2500);
-  const count5  = useCounter(5,  metricsInView, 1800);
+  const count30 = useCounter(30, metricsInView, 4000, 1000);
+  const count5  = useCounter(5,  metricsInView, 3000, 1000);
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
