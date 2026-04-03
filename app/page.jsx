@@ -103,26 +103,14 @@ export default function CentreIALanding() {
   const count30 = useCounter(30, metricsInView, 2500);
   const count3  = useCounter(3,  metricsInView, 1800);
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('sending');
-    try {
-      // Substituïu FORM_ID pel vostre ID de Formspree (formspree.io)
-      const res = await fetch('https://formspree.io/f/FORM_ID', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          nom: formData.nom,
-          centre: formData.centre,
-          carrec: formData.carrec,
-          missatge: formData.missatge,
-        }),
-      });
-      if (res.ok) setFormStatus('success');
-      else setFormStatus('error');
-    } catch {
-      setFormStatus('error');
-    }
+    const subject = encodeURIComponent(`Sol·licitud diagnòstic - ${formData.centre}`);
+    const body = encodeURIComponent(
+      `Nom: ${formData.nom}\nCentre: ${formData.centre}\nCàrrec: ${formData.carrec}\n\n${formData.missatge}`
+    );
+    window.location.href = `mailto:mestreambtemps@gmail.com?subject=${subject}&body=${body}`;
+    setFormStatus('success');
   };
 
   return (
@@ -433,14 +421,14 @@ export default function CentreIALanding() {
               {
                 quote: "Hem automatitzat la feina repetitiva i hem recuperat hores per a allò que importa. Els docents nous s'incorporen en dies, no en setmanes. El sistema queda, no depèn de cap persona.",
                 author: 'Jordi Gálvez',
-                role: 'Secretari',
+                role: 'Mestre',
                 school: 'Escola Riera Alta, Santa Coloma de Gramenet',
               },
               {
-                quote: "Vam passar de tenir 6 formats d'informe diferent a un de sol. En un trimestre. Sense imposar res: el claustre ho va adoptar perquè funcionava i estalviava temps real.",
+                quote: "Unificar la manera de treballar les situacions d'aprenentatge de ciències era un repte constant: cada mestra tenia el seu enfocament. Ara tenim un assistent que guia cada docent en el disseny d'aquestes programacions amb un criteri comú de centre.",
                 author: 'M. Àngels Puig',
-                role: 'Cap d\'estudis',
-                school: 'Escola pública, Badalona',
+                role: 'Cap d\'estudis, Badalona',
+                school: '',
               },
             ].map((test, i) => (
               <FadeItem
@@ -452,7 +440,7 @@ export default function CentreIALanding() {
                 <div className="border-t border-slate-100 pt-5">
                   <p className="font-black text-slate-900">{test.author}</p>
                   <p className="text-sm text-blue-900 font-medium">{test.role}</p>
-                  <p className="text-sm text-slate-500">{test.school}</p>
+                  {test.school && <p className="text-sm text-slate-500">{test.school}</p>}
                 </div>
               </FadeItem>
             ))}
@@ -464,13 +452,13 @@ export default function CentreIALanding() {
       <section className="py-24 px-6">
         <div className="max-w-3xl mx-auto">
           <h2 className="text-5xl md:text-6xl font-black mb-4">Preguntes freqüents</h2>
-          <p className="text-xl text-slate-500 mb-14">Les objeccions habituals, respostes directes.</p>
+          <div className="mb-14" />
 
           <div className="bg-white border-2 border-slate-200 rounded-2xl px-8">
             {[
               {
                 question: 'Quant costa el programa?',
-                answer: "La inversió varia segons la mida del centre i les fases que s'implementen. Els programes comencen des de 1.200 €. En la sessió diagnòstica gratuïta t'expliquem les opcions i fem una proposta a mida. No hi ha sorpreses: el preu és tancat des del primer dia.",
+                answer: "La inversió varia segons la mida del centre i les fases que s'implementen. En la sessió diagnòstica gratuïta t'expliquem les opcions i fem una proposta a mida. No hi ha sorpreses: el preu és tancat des del primer dia.",
               },
               {
                 question: 'Ja fem formació en IA. Per a qué necessitem això?',
@@ -506,7 +494,7 @@ export default function CentreIALanding() {
             <div>
               <h2 className="text-5xl md:text-6xl font-black mb-6">Voleu explorar si encaixa?</h2>
               <p className="text-xl text-blue-100 mb-8 leading-relaxed">
-                En parlem durant 20 minuts durant els quals identifiquem els 3 punts on el vostre centre perd més temps. Sense pressió. Sense compromís. Diagnòstic gratuït.
+                En parlem durant 20 minuts durant els quals identifiquem els 3 punts on el vostre centre perd més temps. Sense compromís. Diagnòstic gratuït.
               </p>
               <div className="space-y-3 text-blue-200 text-sm">
                 <p>mestreambtemps@gmail.com</p>
