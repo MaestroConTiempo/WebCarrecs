@@ -522,7 +522,7 @@ export default function CentreIALanding() {
                   Escriu per WhatsApp
                 </a>
               </div>
-              <p className="text-xs text-blue-300 mt-8">Rubén Fabri · +15 anys de docència · Secretari de l'escola · Automatitzant la feina a les escoles</p>
+              <p className="text-xs text-blue-300 mt-8">Rubén Fabri · +15 anys de docència · Secretari de l'escola<br />Automatitzant la feina a les escoles</p>
             </div>
 
             {/* Right: form */}
