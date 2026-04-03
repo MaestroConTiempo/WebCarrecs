@@ -148,9 +148,6 @@ export default function CentreIALanding() {
             No és una formació genèrica. És implementació real de sistemes de treball que necessiteu
           </p>
 
-          <p className="text-lg text-slate-500 mb-10 max-w-3xl leading-relaxed">
-            Implantem fluxos de treball amb IA que el claustre usa dia a dia. Una línia d'escola unificada, que tothom segueix. Sistemàtica, documentada, que queda al centre.
-          </p>
 
           <div className="flex flex-col sm:flex-row gap-4 mb-16">
             <a href="#contacte" className="px-8 py-5 bg-blue-900 text-white rounded-lg font-bold hover:bg-blue-950 transition flex items-center justify-center gap-3 text-lg">
