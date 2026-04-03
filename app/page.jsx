@@ -483,8 +483,8 @@ export default function CarrecsIALanding() {
             </div>
           </FadeItem>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
+          {(() => {
+            const items = [
               {
                 title: 'Actes i documentació',
                 before: '20–30 min per acta, redacció manual post-reunió, format diferent segons qui escriu.',
@@ -500,22 +500,40 @@ export default function CarrecsIALanding() {
                 before: 'Cada vegada que uses la IA obtens un resultat diferent.',
                 after: 'Assistents configurats amb les instruccions i criteris propis del vostre servei. Sempre el mateix resultat, independentment de qui l\'usa.',
               },
-            ].map((item, i) => (
-              <FadeItem key={i} delay={i * 80}>
-                <div className="h-full flex flex-col">
-                  <h3 className="font-black text-lg text-white mb-4">{item.title}</h3>
-                  <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-5 mb-3 flex-1">
-                    <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Abans</p>
-                    <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
-                  </div>
-                  <div className="bg-blue-900/30 border border-blue-600/40 rounded-xl p-5">
-                    <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Després</p>
-                    <p className="text-slate-200 text-sm leading-relaxed">{item.after}</p>
-                  </div>
-                </div>
-              </FadeItem>
-            ))}
-          </div>
+            ];
+            return (
+              <div className="grid md:grid-cols-3 gap-x-6 gap-y-3">
+                {/* Títols */}
+                {items.map((item, i) => (
+                  <FadeItem key={`t${i}`} delay={i * 80}>
+                    <h3 className="font-black text-lg text-white mb-2">{item.title}</h3>
+                  </FadeItem>
+                ))}
+                {/* Fila Abans */}
+                {items.map((item, i) => (
+                  <FadeItem key={`b${i}`} delay={i * 80}>
+                    <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-5 h-full">
+                      <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Abans</p>
+                      <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
+                    </div>
+                  </FadeItem>
+                ))}
+                {/* Fletxa */}
+                {items.map((_, i) => (
+                  <div key={`a${i}`} className="flex items-center justify-center py-1 text-blue-500 text-xl font-black">↓</div>
+                ))}
+                {/* Fila Després */}
+                {items.map((item, i) => (
+                  <FadeItem key={`d${i}`} delay={i * 80}>
+                    <div className="bg-blue-900/30 border border-blue-600/40 rounded-xl p-5 h-full">
+                      <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Després</p>
+                      <p className="text-slate-200 text-sm leading-relaxed">{item.after}</p>
+                    </div>
+                  </FadeItem>
+                ))}
+              </div>
+            );
+          })()}
         </div>
       </section>
 
