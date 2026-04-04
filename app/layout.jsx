@@ -4,7 +4,7 @@ export const metadata = {
   title: 'Càrrecs amb IA - Automatitza la gestió educativa',
   description: 'Programa d\'automatització per a seminaris de càrrecs de gestió educativa. Menys paperassa, més lideratge.',
   keywords: 'càrrecs educatius, IA, automatització, secretari, cap d\'estudis, coordinador pedagògic, director',
-  icons: { icon: '/icon.svg' },
+  icons: { icon: '/icon.png' },
 };
 
 export default function RootLayout({ children }) {
