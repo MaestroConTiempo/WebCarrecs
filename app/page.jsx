@@ -511,12 +511,12 @@ export default function CarrecsIALanding() {
                 {items.map((item, i) => (
                   <FadeItem key={i} delay={i * 80}>
                     <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-red-900/30 border-l-4 border-red-500 rounded-xl p-6">
+                      <div className="bg-slate-800 border-l-4 border-red-500 rounded-xl p-6">
                         <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-3">Abans</p>
                         <p className="font-black text-white text-base mb-3">{item.title}</p>
                         <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
                       </div>
-                      <div className="bg-blue-900/30 border-l-4 border-emerald-500 rounded-xl p-6 flex flex-col">
+                      <div className="bg-slate-800 border-l-4 border-emerald-500 rounded-xl p-6 flex flex-col">
                         <p className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">Després</p>
                         <p className="text-slate-200 text-sm leading-relaxed flex-1">{item.after}</p>
                         <p className="text-emerald-400 font-bold text-sm mt-4">↗ Impacte real</p>
@@ -620,6 +620,13 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-12">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Qui hi ha darrere</p>
+              <div className="flex justify-center mb-6">
+                <img
+                  src="/ruben.png"
+                  alt="Rubén Fabri"
+                  className="w-36 h-36 rounded-full object-cover object-top shadow-lg border-4 border-blue-100"
+                />
+              </div>
               <h2 className="text-4xl md:text-5xl font-black">Rubén Fabri</h2>
             </div>
           </FadeItem>
