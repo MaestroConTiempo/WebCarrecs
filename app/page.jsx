@@ -185,7 +185,7 @@ export default function CarrecsIALanding() {
               href="#contacte"
               className="inline-flex items-center gap-3 bg-blue-500 hover:bg-blue-400 text-white font-bold text-lg px-10 py-5 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl shadow-blue-900/40"
             >
-              Voleu portar el programa al vostre seminari?
+              Portem el programa al vostre grup de treball.
               <ArrowRight size={20} />
             </a>
           </FadeItem>
@@ -385,7 +385,7 @@ export default function CarrecsIALanding() {
                 sessions: 'Sessions 1–2',
                 subtitle: 'Criteris + primers fluxos',
                 desc: 'Criteri comú d\'ús de la IA al centre. Primers fluxos de documentació automatitzada: informes, actes, comunicacions.',
-                note: 'Basat en tasques reals dels assistents.',
+                note: 'Analitzem quines tasques us fan perdre més temps i treballem sobre elles.',
               },
               {
                 sessions: 'Sessions 3–4',
@@ -396,7 +396,7 @@ export default function CarrecsIALanding() {
               {
                 sessions: 'Sessió 5',
                 subtitle: 'Consolidació del sistema',
-                desc: 'Protocols d\'implantació per a noves situacions.',
+                desc: 'Documentació paso a paso + plantilles reutilitzables + 3 mesos de suport per email.',
                 note: 'Guia per portar el que heu après al vostre equip i mantenir el sistema viu.',
               },
               {
@@ -479,7 +479,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-black mb-4">El que canvia quan apliqueu el que aprendreu aquí</h2>
-              <p className="text-slate-400 text-lg italic">"Multipliqueu l'estalvi per cada càrrec, cada docent i cada trimestre."</p>
+              <p className="text-slate-400 text-lg italic">"Un director estalvia ~100 hores/any. Multiplica'l per cada càrrec de gestió: són 400 hores anuals que podrien anar a lideratge real."</p>
             </div>
           </FadeItem>
 
@@ -493,47 +493,73 @@ export default function CarrecsIALanding() {
               {
                 title: 'Informes i memòries',
                 before: 'Redacció des de zero cada vegada, hores per document, sense plantilla comuna.',
-                after: 'Assistent que genera l\'esborrany amb els criteris i format propis del vostre servei. El professional revisa i ajusta.',
+                after: 'Assistent que genera l\'esborrany en minuts. D\'1 hora a 5 minuts per informe. El professional revisa i ajusta.',
               },
               {
-                title: 'Transferència a noves situacions',
-                before: 'Cada vegada que uses la IA obtens un resultat diferent.',
-                after: 'Assistents configurats amb les instruccions i criteris propis del vostre servei. Sempre el mateix resultat, independentment de qui l\'usa.',
+                title: 'Programacions automàtiques',
+                before: 'Crear programacions des de zero seguint el model del centre: més d\'1 hora per programació.',
+                after: 'Assistent configurat amb el model propi del centre que genera programacions de forma automàtica. D\'1 hora de feina a 3 minuts, programació creada.',
+              },
+              {
+                title: 'Criteris unificats per a activitats',
+                before: 'Cada docent treballa la resolució de problemes o el vocabulari de manera diferent. Criteris dispersos, resultats inconsistents.',
+                after: 'Un assistent que guia cada docent amb el criteri comú del centre. Imagineu que tota l\'escola treballa igual la resolució de problemes o unifica el treball de vocabulari a través d\'un assistent.',
               },
             ];
             return (
-              <div className="grid md:grid-cols-3 gap-x-6 gap-y-3">
-                {/* Títols */}
+              <div className="grid md:grid-cols-2 gap-8">
                 {items.map((item, i) => (
-                  <FadeItem key={`t${i}`} delay={i * 80}>
-                    <h3 className="font-black text-lg text-white mb-2">{item.title}</h3>
-                  </FadeItem>
-                ))}
-                {/* Fila Abans */}
-                {items.map((item, i) => (
-                  <FadeItem key={`b${i}`} delay={i * 80}>
-                    <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-5 h-full">
-                      <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Abans</p>
-                      <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
-                    </div>
-                  </FadeItem>
-                ))}
-                {/* Fletxa */}
-                {items.map((_, i) => (
-                  <div key={`a${i}`} className="flex items-center justify-center py-1 text-blue-500 text-xl font-black">↓</div>
-                ))}
-                {/* Fila Després */}
-                {items.map((item, i) => (
-                  <FadeItem key={`d${i}`} delay={i * 80}>
-                    <div className="bg-blue-900/30 border border-blue-600/40 rounded-xl p-5 h-full">
-                      <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Després</p>
-                      <p className="text-slate-200 text-sm leading-relaxed">{item.after}</p>
+                  <FadeItem key={i} delay={i * 80}>
+                    <div>
+                      <h3 className="font-black text-lg text-white mb-3">{item.title}</h3>
+                      <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-5 mb-2">
+                        <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Abans</p>
+                        <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
+                      </div>
+                      <div className="flex items-center justify-center py-1 text-blue-500 text-2xl font-black">↓</div>
+                      <div className="bg-blue-900/30 border border-blue-600/40 rounded-xl p-5">
+                        <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Després</p>
+                        <p className="text-slate-200 text-sm leading-relaxed">{item.after}</p>
+                      </div>
                     </div>
                   </FadeItem>
                 ))}
               </div>
             );
           })()}
+        </div>
+      </section>
+
+      {/* ── TESTIMONIS ── */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          <FadeItem>
+            <div className="text-center mb-16">
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Testimonis</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-4">El que diuen els centres</h2>
+            </div>
+          </FadeItem>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: 'Hem passat d\'invertir 18h per docent en informes a menys de 2h. I tot el claustre treballa amb el mateix criteri. Ja no hem de perseguir ningú.',
+              },
+              {
+                quote: 'Hem automatitzat la feina repetitiva i hem recuperat hores per a allò que importa. Els docents nous s\'incorporen en dies, no en setmanes. El sistema queda, no depèn de cap persona.',
+              },
+              {
+                quote: 'Unificar la manera de treballar les situacions d\'aprenentatge de ciències era un repte constant: cada mestra tenia el seu enfocament. Ara tenim un assistent que guia cada docent en el disseny d\'aquestes programacions amb un criteri comú de centre.',
+              },
+            ].map((item, i) => (
+              <FadeItem key={i} delay={i * 80}>
+                <div className="bg-blue-50 rounded-2xl p-8 border border-blue-100 h-full flex flex-col">
+                  <p className="text-blue-300 text-4xl font-black leading-none mb-4">"</p>
+                  <p className="text-slate-700 leading-relaxed italic flex-1">{item.quote}</p>
+                </div>
+              </FadeItem>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -566,8 +592,8 @@ export default function CarrecsIALanding() {
               },
               {
                 num: '04',
-                title: 'Perdre hores cada setmana',
-                desc: 'Cada trimestre les mateixes hores en informes, actes i documentació. Hores que no tornaran i que es podrien automatitzar.',
+                title: '20 hores/mes perdudes en paperassa',
+                desc: '20 hores/mes en paperassa repetitiva que es podrien dedicar a lideratge educatiu real, suport a docents, millora estratègica.',
               },
             ].map((item, i) => (
               <FadeItem key={i} delay={i * 80}>
