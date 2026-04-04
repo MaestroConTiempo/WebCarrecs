@@ -192,7 +192,7 @@ export default function CarrecsIALanding() {
 
           <FadeItem delay={400}>
             <p className="mt-8 text-slate-400 text-sm">
-              Per a secretaris, caps d'estudis, coordinadors pedagògics i directors
+              Per a secretaris, caps d'estudis, coordinadors pedagògics, directors i equips de CRPS
             </p>
           </FadeItem>
         </div>
