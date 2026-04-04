@@ -122,11 +122,11 @@ export default function CarrecsIALanding() {
   const faqs = [
     {
       q: 'Necessitem coneixements previs d\'IA?',
-      a: 'No. El programa parteix de zero i es construeix sobre les vostres tasques reals. No cal saber res d\'IA per endavant. Cada sessió és demostració + pràctica guiada + construcció d\'eines pròpies.',
+      a: 'No. El programa parteix de zero i es construeix sobre les vostres tasques reals. No cal saber res d\'IA amb antel·lació. Cada sessió és demostració + pràctica guiada + construcció d\'eines pròpies.',
     },
     {
       q: 'Per a quins càrrecs és útil?',
-      a: 'Per a qualsevol càrrec de gestió educativa: secretaris, caps d\'estudis, coordinadors pedagògics, directors... Qualsevol que gestioni documentació repetitiva — actes, informes, comunicacions, programacions.',
+      a: 'Per a qualsevol càrrec de gestió educativa: secretaris, caps d\'estudis, coordinadors pedagògics, directors, equips de CRPS... Qualsevol que gestioni documentació repetitiva — actes, informes, comunicacions, programacions.',
     },
     {
       q: 'On es fan les sessions?',
@@ -227,7 +227,7 @@ export default function CarrecsIALanding() {
               {
                 icon: '📚',
                 title: 'Dissenyar, unificar, acordar',
-                desc: 'Programacions didàctiques que s\'han de revisar. Criteris d\'avaluació que cada equip interpreta diferent. Cadascú fa la seva interpretació.',
+                desc: 'Programacions didàctiques que s\'han de revisar. Criteris d\'avaluació que cada equip interpreta diferent.',
               },
               {
                 icon: '📄',
@@ -396,7 +396,7 @@ export default function CarrecsIALanding() {
               {
                 sessions: 'Sessió 5',
                 subtitle: 'Consolidació del sistema',
-                desc: 'Documentació paso a paso + plantilles reutilitzables + 3 mesos de suport per email.',
+                desc: 'Documentació pas a pas + plantilles reutilitzables + 3 mesos de suport per email.',
                 note: 'Guia per portar el que heu après al vostre equip i mantenir el sistema viu.',
               },
               {
@@ -507,19 +507,19 @@ export default function CarrecsIALanding() {
               },
             ];
             return (
-              <div className="grid md:grid-cols-2 gap-8">
+              <div className="space-y-5">
                 {items.map((item, i) => (
                   <FadeItem key={i} delay={i * 80}>
-                    <div>
-                      <h3 className="font-black text-lg text-white mb-3">{item.title}</h3>
-                      <div className="bg-red-900/30 border border-red-700/40 rounded-xl p-5 mb-2">
-                        <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-2">Abans</p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-red-900/30 border-l-4 border-red-500 rounded-xl p-6">
+                        <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-3">Abans</p>
+                        <p className="font-black text-white text-base mb-3">{item.title}</p>
                         <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
                       </div>
-                      <div className="flex items-center justify-center py-1 text-blue-500 text-2xl font-black">↓</div>
-                      <div className="bg-blue-900/30 border border-blue-600/40 rounded-xl p-5">
-                        <p className="text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Després</p>
-                        <p className="text-slate-200 text-sm leading-relaxed">{item.after}</p>
+                      <div className="bg-blue-900/30 border-l-4 border-emerald-500 rounded-xl p-6 flex flex-col">
+                        <p className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">Després</p>
+                        <p className="text-slate-200 text-sm leading-relaxed flex-1">{item.after}</p>
+                        <p className="text-emerald-400 font-bold text-sm mt-4">↗ Impacte real</p>
                       </div>
                     </div>
                   </FadeItem>
@@ -669,10 +669,10 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
               Voleu portar aquest programa<br />
-              <span className="text-blue-300">al vostre seminari?</span>
+              <span className="text-blue-300">al vostre grup de treball?</span>
             </h2>
             <p className="text-blue-200 text-lg mb-4 leading-relaxed">
-              Escriviu-me i adaptem el programa al perfil i les necessitats del vostre grup de treball.
+              Escriviu-me i adaptem el programa al vostre perfil i necessitats.
             </p>
             <p className="text-blue-300 text-base mb-12">
               Fem una trucada de 20 minuts per identificar les necessitats del seminari i veure com encaixem el programa.
