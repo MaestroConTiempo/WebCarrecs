@@ -368,56 +368,60 @@ export default function CarrecsIALanding() {
         </div>
       </section>
 
-      {/* ── COM FUNCIONA ── */}
-      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
-        <div className="max-w-4xl mx-auto">
+      {/* ── EL QUE CANVIA ── */}
+      <section className="py-24 px-6 bg-slate-900 text-white">
+        <div className="max-w-5xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
-              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Les sessions</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Com funciona el programa</h2>
-              <p className="text-slate-500 text-lg italic">"Cada sessió és un pas cap a un sistema complet"</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-4">El que canvia quan apliqueu el que aprendreu aquí</h2>
+              <p className="text-slate-400 text-lg italic">"Un director estalvia ~100 hores/any. Multiplica'l per cada càrrec de gestió: són 400 hores anuals que podrien anar a lideratge real."</p>
             </div>
           </FadeItem>
 
-          <div className="space-y-4">
-            {[
+          {(() => {
+            const items = [
               {
-                sessions: 'Sessions 1–2',
-                subtitle: 'Criteris + primers fluxos',
-                desc: 'Criteri comú d\'ús de la IA al centre. Primers fluxos de documentació automatitzada: informes, actes, comunicacions.',
-                note: 'Analitzem quines tasques us fan perdre més temps i treballem sobre elles.',
+                title: 'Actes i documentació',
+                before: '20–30 min per acta, redacció manual post-reunió, format diferent segons qui escriu.',
+                after: 'Acta generada en 5 minuts amb el format oficial del vostre servei.',
               },
               {
-                sessions: 'Sessions 3–4',
-                subtitle: 'Assistents + coherència',
-                desc: 'Assistents personalitzats per a programacions, actes, documentació. Fluxos de coherència i línia d\'escola.',
-                note: 'Cada assistent surt amb eines configurades per al seu servei i la seva metodologia.',
+                title: 'Informes i memòries',
+                before: 'Redacció des de zero cada vegada, hores per document, sense plantilla comuna.',
+                after: 'Assistent que genera l\'esborrany en minuts. D\'1 hora a 5 minuts per informe. El professional revisa i ajusta.',
               },
               {
-                sessions: 'Sessió 5',
-                subtitle: 'Consolidació del sistema',
-                desc: 'Documentació pas a pas + plantilles reutilitzables + 3 mesos de suport per email.',
-                note: 'Guia per portar el que heu après al vostre equip i mantenir el sistema viu.',
+                title: 'Programacions automàtiques',
+                before: 'Crear programacions des de zero seguint el model del centre: més d\'1 hora per programació.',
+                after: 'Assistent configurat amb el model propi del centre que genera programacions de forma automàtica. D\'1 hora de feina a 3 minuts, programació creada.',
               },
               {
-                sessions: 'Format',
-                subtitle: 'Presencial i personalitzat',
-                desc: 'Totalment adaptat al perfil del seminari i/o càrrec.',
-                note: 'Demostració + pràctica guiada + construcció d\'eines pròpies a cada sessió.',
+                title: 'Criteris unificats per a activitats',
+                before: 'Cada docent treballa la resolució de problemes o el vocabulari de manera diferent. Criteris dispersos, resultats inconsistents.',
+                after: 'Un assistent que guia cada docent amb el criteri comú del centre. Imagineu que tota l\'escola treballa igual la resolució de problemes o unifica el treball de vocabulari a través d\'un assistent.',
               },
-            ].map((item, i) => (
-              <FadeItem key={i} delay={i * 60}>
-                <div className="bg-white rounded-2xl p-6 border border-blue-100 shadow-sm grid md:grid-cols-3 gap-4 items-start">
-                  <div>
-                    <p className="font-black text-blue-700 text-lg">{item.sessions}</p>
-                    <p className="font-bold text-slate-800">{item.subtitle}</p>
-                  </div>
-                  <p className="text-slate-700 leading-relaxed">{item.desc}</p>
-                  <p className="text-blue-600 text-sm font-semibold leading-relaxed">{item.note}</p>
-                </div>
-              </FadeItem>
-            ))}
-          </div>
+            ];
+            return (
+              <div className="space-y-5">
+                {items.map((item, i) => (
+                  <FadeItem key={i} delay={i * 80}>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="bg-slate-800 border-l-4 border-red-500 rounded-xl p-6">
+                        <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-3">Abans</p>
+                        <p className="font-black text-white text-base mb-3">{item.title}</p>
+                        <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
+                      </div>
+                      <div className="bg-slate-800 border-l-4 border-emerald-500 rounded-xl p-6 flex flex-col">
+                        <p className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">Després</p>
+                        <p className="text-slate-200 text-sm leading-relaxed flex-1">{item.after}</p>
+                        <p className="text-emerald-400 font-bold text-sm mt-4">↗ Impacte real</p>
+                      </div>
+                    </div>
+                  </FadeItem>
+                ))}
+              </div>
+            );
+          })()}
         </div>
       </section>
 
@@ -473,60 +477,56 @@ export default function CarrecsIALanding() {
         </div>
       </section>
 
-      {/* ── EL QUE CANVIA ── */}
-      <section className="py-24 px-6 bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto">
+      {/* ── COM FUNCIONA ── */}
+      <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
+        <div className="max-w-4xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-4">El que canvia quan apliqueu el que aprendreu aquí</h2>
-              <p className="text-slate-400 text-lg italic">"Un director estalvia ~100 hores/any. Multiplica'l per cada càrrec de gestió: són 400 hores anuals que podrien anar a lideratge real."</p>
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Les sessions</p>
+              <h2 className="text-4xl md:text-5xl font-black mb-4">Com funciona el programa</h2>
+              <p className="text-slate-500 text-lg italic">"Cada sessió és un pas cap a un sistema complet"</p>
             </div>
           </FadeItem>
 
-          {(() => {
-            const items = [
+          <div className="space-y-4">
+            {[
               {
-                title: 'Actes i documentació',
-                before: '20–30 min per acta, redacció manual post-reunió, format diferent segons qui escriu.',
-                after: 'Acta generada en 5 minuts amb el format oficial del vostre servei.',
+                sessions: 'Sessions 1–2',
+                subtitle: 'Criteris + primers fluxos',
+                desc: 'Criteri comú d\'ús de la IA al centre. Primers fluxos de documentació automatitzada: informes, actes, comunicacions.',
+                note: 'Analitzem quines tasques us fan perdre més temps i treballem sobre elles.',
               },
               {
-                title: 'Informes i memòries',
-                before: 'Redacció des de zero cada vegada, hores per document, sense plantilla comuna.',
-                after: 'Assistent que genera l\'esborrany en minuts. D\'1 hora a 5 minuts per informe. El professional revisa i ajusta.',
+                sessions: 'Sessions 3–4',
+                subtitle: 'Assistents + coherència',
+                desc: 'Assistents personalitzats per a programacions, actes, documentació. Fluxos de coherència i línia d\'escola.',
+                note: 'Cada assistent surt amb eines configurades per al seu servei i la seva metodologia.',
               },
               {
-                title: 'Programacions automàtiques',
-                before: 'Crear programacions des de zero seguint el model del centre: més d\'1 hora per programació.',
-                after: 'Assistent configurat amb el model propi del centre que genera programacions de forma automàtica. D\'1 hora de feina a 3 minuts, programació creada.',
+                sessions: 'Sessió 5',
+                subtitle: 'Consolidació del sistema',
+                desc: 'Documentació pas a pas + plantilles reutilitzables + 3 mesos de suport per email.',
+                note: 'Guia per portar el que heu après al vostre equip i mantenir el sistema viu.',
               },
               {
-                title: 'Criteris unificats per a activitats',
-                before: 'Cada docent treballa la resolució de problemes o el vocabulari de manera diferent. Criteris dispersos, resultats inconsistents.',
-                after: 'Un assistent que guia cada docent amb el criteri comú del centre. Imagineu que tota l\'escola treballa igual la resolució de problemes o unifica el treball de vocabulari a través d\'un assistent.',
+                sessions: 'Format',
+                subtitle: 'Presencial i personalitzat',
+                desc: 'Totalment adaptat al perfil del seminari i/o càrrec.',
+                note: 'Demostració + pràctica guiada + construcció d\'eines pròpies a cada sessió.',
               },
-            ];
-            return (
-              <div className="space-y-5">
-                {items.map((item, i) => (
-                  <FadeItem key={i} delay={i * 80}>
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="bg-slate-800 border-l-4 border-red-500 rounded-xl p-6">
-                        <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-3">Abans</p>
-                        <p className="font-black text-white text-base mb-3">{item.title}</p>
-                        <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
-                      </div>
-                      <div className="bg-slate-800 border-l-4 border-emerald-500 rounded-xl p-6 flex flex-col">
-                        <p className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">Després</p>
-                        <p className="text-slate-200 text-sm leading-relaxed flex-1">{item.after}</p>
-                        <p className="text-emerald-400 font-bold text-sm mt-4">↗ Impacte real</p>
-                      </div>
-                    </div>
-                  </FadeItem>
-                ))}
-              </div>
-            );
-          })()}
+            ].map((item, i) => (
+              <FadeItem key={i} delay={i * 60}>
+                <div className="bg-white rounded-2xl p-6 border border-blue-100 shadow-sm grid md:grid-cols-3 gap-4 items-start">
+                  <div>
+                    <p className="font-black text-blue-700 text-lg">{item.sessions}</p>
+                    <p className="font-bold text-slate-800">{item.subtitle}</p>
+                  </div>
+                  <p className="text-slate-700 leading-relaxed">{item.desc}</p>
+                  <p className="text-blue-600 text-sm font-semibold leading-relaxed">{item.note}</p>
+                </div>
+              </FadeItem>
+            ))}
+          </div>
         </div>
       </section>
 
