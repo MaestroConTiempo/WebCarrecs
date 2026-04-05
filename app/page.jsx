@@ -167,9 +167,9 @@ export default function CarrecsIALanding() {
           </FadeItem>
 
           <FadeItem delay={100}>
-            <h1 className="text-5xl md:text-7xl font-black leading-tight mb-8 tracking-tight">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight mb-8 tracking-tight">
               Menys paperassa.<br />
-              <span className="text-blue-400">Més lideratge.</span>
+              <span className="text-blue-400 italic">Més lideratge.</span>
             </h1>
           </FadeItem>
 
@@ -208,7 +208,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">La realitat</p>
-              <h2 className="text-3xl md:text-4xl font-black mb-4 leading-tight">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight">
                 Els processos de gestió del centre<br />funcionen igual que fa 15 anys.
               </h2>
               <p className="text-slate-500 text-lg max-w-2xl mx-auto">
@@ -260,7 +260,7 @@ export default function CarrecsIALanding() {
         <div className="max-w-5xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Això no és un altre curs de IA</h2>
+              <h2 className="text-5xl md:text-6xl lg:text-7xl font-black mb-4">Això no és un altre curs de IA</h2>
             </div>
           </FadeItem>
 
@@ -331,7 +331,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">El programa</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Sobre què treballarem</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">Sobre què treballarem</h2>
               <p className="text-slate-500 text-lg italic">"Cada sessió treballa sobre tasques reals. Res de teoria, res de demostracions que no pugueu replicar."</p>
             </div>
           </FadeItem>
@@ -373,7 +373,7 @@ export default function CarrecsIALanding() {
         <div className="max-w-5xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
-              <h2 className="text-4xl md:text-5xl font-black mb-4">El que canvia quan apliqueu el que aprendreu aquí</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">El que canvia quan apliqueu el que aprendreu aquí</h2>
               <p className="text-slate-400 text-lg italic">"Un director estalvia ~100 hores/any. Multiplica'l per cada càrrec de gestió: són 400 hores anuals que podrien anar a lideratge real."</p>
             </div>
           </FadeItem>
@@ -431,7 +431,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Resultats</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Amb què sortireu d'aquest programa</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">Amb què sortireu d'aquest programa</h2>
               <p className="text-slate-600 text-lg">No sortiu amb apunts. Sortiu amb sistemes muntats i la capacitat d'implantar-los.</p>
             </div>
           </FadeItem>
@@ -483,7 +483,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Les sessions</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-4">Com funciona el programa</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">Com funciona el programa</h2>
               <p className="text-slate-500 text-lg italic">"Cada sessió és un pas cap a un sistema complet"</p>
             </div>
           </FadeItem>
@@ -536,7 +536,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Testimonis</p>
-              <h2 className="text-4xl md:text-5xl font-black mb-4">El que diuen els centres</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4">El que diuen els centres</h2>
             </div>
           </FadeItem>
 
@@ -569,7 +569,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">La garantia</p>
-              <h2 className="text-4xl md:text-5xl font-black">Garantia del programa</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black">Garantia del programa</h2>
             </div>
           </FadeItem>
 
@@ -627,7 +627,7 @@ export default function CarrecsIALanding() {
                   className="w-36 h-36 rounded-full object-cover object-top shadow-lg border-4 border-blue-100"
                 />
               </div>
-              <h2 className="text-4xl md:text-5xl font-black">Rubén Fabri</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black">Rubén Fabri</h2>
             </div>
           </FadeItem>
 
@@ -656,7 +656,7 @@ export default function CarrecsIALanding() {
           <FadeItem>
             <div className="text-center mb-16">
               <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">Preguntes freqüents</p>
-              <h2 className="text-4xl md:text-5xl font-black">Les preguntes que tothom fa</h2>
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-black">Les preguntes que tothom fa</h2>
             </div>
           </FadeItem>
 
@@ -674,7 +674,7 @@ export default function CarrecsIALanding() {
       <section id="contacte" className="py-24 px-6 bg-gradient-to-br from-blue-900 via-blue-800 to-slate-900 text-white">
         <div className="max-w-2xl mx-auto text-center">
           <FadeItem>
-            <h2 className="text-4xl md:text-5xl font-black mb-6 leading-tight">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 leading-tight">
               Voleu portar aquest programa<br />
               <span className="text-blue-300">al vostre grup de treball?</span>
             </h2>
