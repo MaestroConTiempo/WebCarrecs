@@ -159,15 +159,15 @@ export default function CarrecsIALanding() {
           style={{ background: 'radial-gradient(circle, #3b82f6 0%, transparent 70%)' }}
         />
 
-        <div className="relative z-10 max-w-5xl mx-auto px-6 py-24 text-center">
+        <div className="relative z-10 w-full px-8 py-24 text-center">
           <FadeItem delay={0}>
-            <p className="text-blue-300 text-sm font-bold tracking-widest uppercase mb-6">
+            <p className="text-blue-300 text-base lg:text-xl font-bold tracking-widest uppercase mb-6">
               Programa d'automatització per a seminaris de càrrecs de gestió educativa
             </p>
           </FadeItem>
 
           <FadeItem delay={100}>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-tight mb-8 tracking-tight">
+            <h1 className="text-5xl md:text-[6.5vw] font-black leading-tight mb-8 tracking-tight">
               Menys paperassa.<br />
               <span className="text-blue-400 italic">Més lideratge.</span>
             </h1>
