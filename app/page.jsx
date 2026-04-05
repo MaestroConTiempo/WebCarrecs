@@ -407,14 +407,14 @@ export default function CarrecsIALanding() {
                   <FadeItem key={i} delay={i * 80}>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="bg-slate-800 border-l-4 border-red-500 rounded-xl p-6">
-                        <p className="text-xs font-bold text-red-400 uppercase tracking-widest mb-3">Abans</p>
-                        <p className="font-black text-white text-base mb-3">{item.title}</p>
-                        <p className="text-slate-300 text-sm leading-relaxed">{item.before}</p>
+                        <p className="text-sm font-bold text-red-400 uppercase tracking-widest mb-3">Abans</p>
+                        <p className="font-black text-white text-lg mb-3">{item.title}</p>
+                        <p className="text-slate-300 text-base leading-relaxed">{item.before}</p>
                       </div>
                       <div className="bg-slate-800 border-l-4 border-emerald-500 rounded-xl p-6 flex flex-col">
-                        <p className="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-3">Després</p>
-                        <p className="text-slate-200 text-sm leading-relaxed flex-1">{item.after}</p>
-                        <p className="text-emerald-400 font-bold text-sm mt-4">↗ Impacte real</p>
+                        <p className="text-sm font-bold text-emerald-400 uppercase tracking-widest mb-3">Després</p>
+                        <p className="text-slate-200 text-base leading-relaxed flex-1">{item.after}</p>
+                        <p className="text-emerald-400 font-bold text-base mt-4">↗ Impacte real</p>
                       </div>
                     </div>
                   </FadeItem>
