@@ -138,7 +138,7 @@ export default function CarrecsIALanding() {
     },
     {
       q: 'Amb quines eines treballem?',
-      a: 'Construïm assistents d\'IA i fluxos de treball adaptats al vostre servei. No cal instal·lar cap programari especial. Les eines que construïu durant el programa queden vostres i les podeu usar des del primer dia.',
+      a: 'Treballem amb eines d\'IA fàcils d\'utilitzar i implementar. No cal instal·lar cap programari especial. Aprendreu a fer-les servir correctament per crear sistemes que treballin per vosaltres, des del primer dia.',
     },
   ];
 
@@ -227,7 +227,7 @@ export default function CarrecsIALanding() {
               {
                 icon: '📚',
                 title: 'Dissenyar, unificar, acordar',
-                desc: 'Programacions didàctiques que s\'han de revisar. Criteris d\'avaluació que cada equip interpreta diferent.',
+                desc: 'Programacions didàctiques que s\'han de revisar. Informes i programacions que cada profe interpreta de maneres diferents.',
               },
               {
                 icon: '📄',
@@ -239,7 +239,7 @@ export default function CarrecsIALanding() {
                 <div className="bg-white rounded-2xl p-8 shadow-sm border border-blue-100 h-full">
                   <div className="text-4xl mb-4">{item.icon}</div>
                   <h3 className="font-black text-lg mb-3 text-slate-900">{item.title}</h3>
-                  <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+                  <p className="text-slate-600 leading-relaxed text-base">{item.desc}</p>
                 </div>
               </FadeItem>
             ))}
@@ -346,12 +346,12 @@ export default function CarrecsIALanding() {
               {
                 num: '2',
                 title: 'Coherència de l\'equip',
-                desc: 'Formats i estàndards comuns per a tot l\'equip. Assistents configurats amb els criteris propis del vostre servei o seminari. Documentació coherent independentment de qui l\'elabora.',
+                desc: 'Formats i estàndards comuns per a tot l\'equip. Assistents configurats amb els criteris propis del vostre càrrec. Documentació coherent independentment de qui l\'elabora.',
               },
               {
                 num: '3',
                 title: 'Continuïtat i onboarding',
-                desc: 'Assistents d\'IA configurats amb els criteris i formats del vostre servei. Fluxos de treball que queden documentats i reutilitzables. Un sistema que el vostre equip pot usar des del primer dia sense dependre de ningú extern.',
+                desc: 'Assistents d\'IA configurats amb els criteris i formats del vostre centre. Fluxos de treball que queden documentats i reutilitzables. Un sistema que el vostre equip pot usar des del primer dia sense dependre de ningú extern.',
               },
             ].map((item, i) => (
               <FadeItem key={i} delay={i * 80}>
@@ -383,12 +383,12 @@ export default function CarrecsIALanding() {
               {
                 title: 'Actes i documentació',
                 before: '20–30 min per acta, redacció manual post-reunió, format diferent segons qui escriu.',
-                after: 'Acta generada en 5 minuts amb el format oficial del vostre servei.',
+                after: 'Acta generada en 5 minuts amb el format oficial del vostre centre.',
               },
               {
                 title: 'Informes i memòries',
                 before: 'Redacció des de zero cada vegada, hores per document, sense plantilla comuna.',
-                after: 'Assistent que genera l\'esborrany en minuts. D\'1 hora a 5 minuts per informe. El professional revisa i ajusta.',
+                after: 'Assistent que genera l\'esborrany en minuts. D\'1 hora a 5 minuts per informe. La mestra revisa i ajusta.',
               },
               {
                 title: 'Programacions automàtiques',
@@ -462,7 +462,7 @@ export default function CarrecsIALanding() {
                 <ul className="space-y-4">
                   {[
                     'Guies per transferir els fluxos de treball a altres situacions',
-                    'Assistents configurats amb els criteris i formats propis del vostre servei',
+                    'Assistents configurats amb els criteris i formats propis del vostre càrrec o centre',
                     'No sortiu amb apunts. Sortiu amb sistemes muntats i la capacitat d\'implantar-los',
                   ].map((item, i) => (
                     <li key={i} className="flex gap-3 items-start">
@@ -563,36 +563,31 @@ export default function CarrecsIALanding() {
         </div>
       </section>
 
-      {/* ── GARANTIA ── */}
+      {/* ── EL COST DE NO ACTUAR ── */}
       <section className="py-24 px-6" style={{ background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 50%, #eff6ff 100%)' }}>
         <div className="max-w-5xl mx-auto">
           <FadeItem>
             <div className="text-center mb-16">
-              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">La garantia</p>
-              <h2 className="text-4xl md:text-5xl font-black">Garantia del programa</h2>
+              <p className="text-blue-600 text-sm font-bold tracking-widest uppercase mb-4">El cost de no actuar</p>
+              <h2 className="text-4xl md:text-5xl font-black">Quin és el risc de continuar com esteu?</h2>
             </div>
           </FadeItem>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6">
             {[
               {
                 num: '01',
-                title: 'Garantia de resultats',
-                desc: 'Aconseguir com a mínim 2 fluxos de treball funcionals i aplicables a la vostra realitat.',
-              },
-              {
-                num: '02',
-                title: 'El risc real',
+                title: 'Un any més de paperassa',
                 desc: 'El risc no és invertir en aquest programa. El risc és continuar un any més amb la mateixa càrrega de paperassa.',
               },
               {
-                num: '03',
+                num: '02',
                 title: 'Sense criteris comuns',
                 desc: 'Càrrecs cremats fent feina mecànica i sense un sistema que realment funcioni en pilot automàtic.',
               },
               {
-                num: '04',
-                title: '20 hores/mes perdudes en paperassa',
+                num: '03',
+                title: '20 hores/mes perdudes',
                 desc: '20 hores/mes en paperassa repetitiva que es podrien dedicar a lideratge educatiu real, suport a docents, millora estratègica.',
               },
             ].map((item, i) => (
