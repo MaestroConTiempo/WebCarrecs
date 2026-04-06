@@ -619,7 +619,7 @@ export default function CarrecsIALanding() {
                 <img
                   src="/ruben.png"
                   alt="Rubén Fabri"
-                  className="w-36 h-36 rounded-full object-cover object-top shadow-lg border-4 border-blue-100"
+                  className="w-72 h-72 rounded-full object-cover object-top shadow-lg border-4 border-blue-100"
                 />
               </div>
               <h2 className="text-4xl md:text-5xl font-black">Rubén Fabri</h2>
